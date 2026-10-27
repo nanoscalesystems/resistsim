@@ -32,14 +32,12 @@ class Chemistry:
     d_th: float = 0.5        # placeholder development threshold
 
 
-def space_cd(x, d, d_th):
-    """Width of the opened space around x=0 where deprotection >= d_th (linear interpolation).
-
-    Returns 0 if nothing opens, and the full period if the space merges with its neighbours.
-    """
+def space_edges(x, d, d_th):
+    """(left, right) edges of the space around x=0 where deprotection >= d_th, by linear
+    interpolation. None if nothing opens or the space merges with its neighbours."""
     i0 = int(np.argmin(np.abs(x)))
     if d[i0] < d_th:
-        return 0.0
+        return None
 
     def edge(step):
         i = i0
@@ -52,8 +50,19 @@ def space_cd(x, d, d_th):
 
     right, left = edge(+1), edge(-1)
     if right is None or left is None:
+        return None
+    return float(left), float(right)
+
+
+def space_cd(x, d, d_th):
+    """Space width (nm). 0 if nothing opens; the full period if the space merges."""
+    i0 = int(np.argmin(np.abs(x)))
+    if d[i0] < d_th:
+        return 0.0
+    e = space_edges(x, d, d_th)
+    if e is None:
         return float(x[-1] - x[0] + (x[1] - x[0]))
-    return float(right - left)
+    return e[1] - e[0]
 
 
 def fem(optics, chem, doses, defoci, dx=0.25):
