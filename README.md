@@ -1,4 +1,5 @@
 # resistsim
+[![tests](https://github.com/nanoscalesystems/resistsim/actions/workflows/ci.yml/badge.svg)](https://github.com/nanoscalesystems/resistsim/actions/workflows/ci.yml)
 
 Open-source photoresist process simulator (1D), from mask to process window.
 Maintained by [Nanoscale Systems](https://github.com/nanoscalesystems). Lead author: Fazil (@phazyl).
