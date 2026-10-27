@@ -19,6 +19,7 @@ matrix, exposure latitude and depth of focus.
 | Development | Constant threshold on deprotected fraction | `pipeline.py` |
 | Metrics | Contrast, NILS, process window | `metrics.py`, `process_window.py` |
 | Data | Sourced resist/PAG parameters with status and citation | `registry.py`, `calibration.py` |
+| Stochastics | Poisson photon absorption and acid generation, 2D top-down (x across, y along lines), LER/LWR from edge extraction | `stochastic.py` |
 
 ## Quick start
 
@@ -43,6 +44,9 @@ diffusion or quenching.
 - The chemistry data come from 265 nm and electron-beam experiments; they are not applied to EUV optics.
 - Thin mask, thin resist, no aberrations, no stochastics (shot noise, LER), no depth dimension.
 - Absolute DOF and EL values from the examples are not predictions.
+- Stochastic parameters (absorbed fraction, acids per photon, PAG density, blur) are unsourced placeholders. Results show trends such as roughness versus dose, not absolute LER.
+- The example's LER-versus-dose slope is about -0.6 (pure shot noise gives about -0.5). Do not quote the absolute roughness values.
+- No quencher or PAG-site randomness, no secondary-electron transport, and no metrology-noise removal.
 
 ## Data provenance
 
