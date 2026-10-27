@@ -48,6 +48,7 @@ diffusion or quenching.
 - Stochastic parameters (absorbed fraction, acids per photon, PAG density, blur) are unsourced placeholders. Results show trends such as roughness versus dose, not absolute LER.
 - The example's LER-versus-dose slope is about -0.6 (pure shot noise gives about -0.5). Do not quote the absolute roughness values.
 - No quencher or PAG-site randomness, no secondary-electron transport, and no metrology-noise removal.
+- Quencher is a fast-neutralization limit and protecting group-noise is missing
 
 ## Data provenance
 

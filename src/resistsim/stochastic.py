@@ -1,13 +1,15 @@
 """Stochastic (shot-noise) resist model, 2D top-down view (x across the lines, y along them).
 
-Imaging stays 1D (infinite lines, so the image is constant along y). Photon absorption and
-acid generation are Poisson processes on a pixel grid; the acid field is blurred, baked with
-the 2D PEB model and developed by a threshold. Edge positions along y give LER/LWR.
+Imaging stays 1D (infinite lines, so the image is constant along y). Photons, acid yield, PAG
+count and quencher count can each be Poisson-random (see the `random_*` flags); the acid field is
+blurred, baked with the 2D PEB model and developed by a threshold. Edge positions along y give
+LER/LWR.
 
-ALL parameters in `Stochastic` are UNSOURCED placeholders, as are diffusion lengths and the
-development threshold. Use for trends (e.g. roughness vs dose), not absolute predictions.
+`Stochastic()` defaults are UNSOURCED placeholders. `NAULLEAU_CAR` uses published modeling
+assumptions (see below). Diffusion lengths and the development threshold are placeholders either
+way. Use for trends and term rankings, not absolute predictions.
 """
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 import numpy as np
 from .bake import diffuse_periodic, peb_1d
 from .pipeline import space_edges
@@ -19,9 +21,35 @@ EV_J = 1.602176634e-19
 @dataclass(frozen=True)
 class Stochastic:
     absorbed_fraction: float = 0.30   # fraction of incident photons absorbed in the film
-    acids_per_photon: float = 1.0     # mean acids generated per absorbed photon
+    acids_per_photon: float = 1.0     # mean radiation-chemistry events (acids) per absorbed photon
     pag_per_nm2: float = 10.0         # PAG molecules per nm^2 (areal, thin film)
     blur_nm: float = 2.0              # rms blur of acid deposition before the PEB
+    quencher_per_nm2: float = 0.0     # quencher molecules per nm^2 (0 = none)
+    # which quantities are random (Poisson) rather than fixed at their mean:
+    random_photons: bool = True
+    random_yield: bool = True
+    random_pag: bool = False
+    random_quencher: bool = False
+
+    @classmethod
+    def from_volumetric(cls, absorptivity_per_nm, thickness_nm, acids_per_photon,
+                        pag_per_nm3, quencher_per_nm3=0.0, blur_nm=2.0,
+                        random_pag=True, random_quencher=True):
+        """Build from bulk quantities: absorptivity (1/nm), densities (1/nm^3), film thickness (nm)."""
+        return cls(absorbed_fraction=float(1.0 - np.exp(-absorptivity_per_nm * thickness_nm)),
+                   acids_per_photon=acids_per_photon,
+                   pag_per_nm2=pag_per_nm3 * thickness_nm,
+                   quencher_per_nm2=quencher_per_nm3 * thickness_nm,
+                   blur_nm=blur_nm, random_pag=random_pag, random_quencher=random_quencher)
+
+
+# Inputs from Naulleau et al., Chem. Mater. 2026, 38, 6141 (DOI 10.1021/acs.chemmater.5c02771),
+# Table 1 (35 nm chemically amplified resist). These are the authors' MODELING ASSUMPTIONS for an
+# illustrative case, not measurements. blur_nm = 3 nm follows the electron thermalization distance
+# quoted there (about 3 nm in a typical resist); it is not a Table 1 value.
+NAULLEAU_CAR = Stochastic.from_volumetric(
+    absorptivity_per_nm=0.0042, thickness_nm=35.0, acids_per_photon=2.8,
+    pag_per_nm3=0.2, quencher_per_nm3=0.09, blur_nm=3.0)
 
 
 def photons_per_nm2(dose_mj_cm2, wavelength_nm):
@@ -31,18 +59,32 @@ def photons_per_nm2(dose_mj_cm2, wavelength_nm):
 
 
 def mean_acid(img, dx, wavelength, dose, sto):
-    """Mean-field acid fraction (1D): the expectation of `generate_acids` before pixel noise."""
+    """Mean-field acid fraction (1D), ignoring quencher and PAG-pool statistics."""
     h = (sto.acids_per_photon * sto.absorbed_fraction
          * photons_per_nm2(dose, wavelength) * np.asarray(img) / sto.pag_per_nm2)
     return diffuse_periodic(np.clip(h, 0.0, 1.0), dx, sto.blur_nm)
 
 
 def generate_acids(img, dx, wavelength, dose, sto, n_y, rng):
-    """Noisy acid fraction field, shape (len(img), n_y): Poisson photons -> Poisson acids -> blur."""
+    """Noisy net acid fraction field, shape (len(img), n_y).
+
+    Photons -> events (acids) -> limited by available PAG -> minus quencher -> blur.
+    Each stage is Poisson or fixed at its mean according to the `random_*` flags.
+    Quenching is the fast pixelwise neutralization limit (before blur).
+    """
+    shape = (len(img), n_y)
     mu = photons_per_nm2(dose, wavelength) * sto.absorbed_fraction * dx * dx * np.asarray(img)
-    photons = rng.poisson(np.repeat(mu[:, None], n_y, axis=1))
-    acids = rng.poisson(photons * sto.acids_per_photon)
-    h = np.clip(acids / (sto.pag_per_nm2 * dx * dx), 0.0, 1.0)
+    mu = np.repeat(mu[:, None], n_y, axis=1)
+    photons = rng.poisson(mu) if sto.random_photons else mu
+    events = rng.poisson(photons * sto.acids_per_photon) if sto.random_yield else photons * sto.acids_per_photon
+    pag_mean = sto.pag_per_nm2 * dx * dx
+    pag = rng.poisson(pag_mean, size=shape) if sto.random_pag else pag_mean
+    acids = np.minimum(events, pag)
+    if sto.quencher_per_nm2 > 0:
+        q_mean = sto.quencher_per_nm2 * dx * dx
+        q = rng.poisson(q_mean, size=shape) if sto.random_quencher else q_mean
+        acids = np.maximum(acids - q, 0.0)
+    h = np.clip(acids / pag_mean, 0.0, 1.0)
     return diffuse_periodic(h, dx, sto.blur_nm)
 
 
@@ -56,12 +98,16 @@ def mean_deprotection(img, dx, wavelength, dose, sto, chem):
 
 
 def stochastic_deprotection(img, dx, wavelength, dose, sto, chem, n_y, rng):
+    """If `sto` carries a quencher, it is already subtracted pixelwise, so chem.quencher is ignored."""
+    if sto.quencher_per_nm2 > 0:
+        chem = replace(chem, quencher=0.0)
     return _bake(generate_acids(img, dx, wavelength, dose, sto, n_y, rng), dx, chem)
 
 
 def threshold_for_cd(x, d_mean, target_cd):
-    """Development threshold that makes the mean-field space equal `target_cd`.
+    """Development threshold that makes the MEAN deprotection profile open a space of `target_cd`.
 
+    d_mean can be the mean-field profile or the row-average of a noisy pilot field.
     Equivalent to choosing a resist of a given sensitivity (dose-to-size) for this image.
     """
     return float(np.interp(target_cd / 2.0, x, d_mean))
