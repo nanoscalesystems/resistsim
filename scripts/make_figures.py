@@ -9,6 +9,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.ticker import NullFormatter, ScalarFormatter
 from resistsim import aerial_image_1d, nils, Optics, Chemistry, fem, process_window
 from resistsim.stochastic import (NAULLEAU_CAR, Stochastic, stochastic_deprotection, threshold_for_cd,
                                   edge_arrays, roughness)
@@ -19,7 +20,8 @@ BG, TXT, CYAN, GRID, MUTED = "#0c1219", "#dbe6ee", "#22d3ee", "#1b2733", "#8296a
 plt.rcParams.update({"figure.facecolor": BG, "axes.facecolor": BG, "savefig.facecolor": BG,
                      "text.color": TXT, "axes.labelcolor": TXT, "xtick.color": MUTED, "ytick.color": MUTED,
                      "axes.edgecolor": GRID, "grid.color": GRID, "axes.grid": True, "font.size": 11,
-                     "legend.frameon": False, "axes.spines.top": False, "axes.spines.right": False})
+                     "legend.frameon": False, "axes.spines.top": False, "axes.spines.right": False,
+                     "axes.axisbelow": True})
 SHADES = [CYAN, "#67e8f9", "#a5f3fc"]
 
 
@@ -38,9 +40,9 @@ fig, ax = plt.subplots(figsize=(7, 3.8))
 for z, c in zip((0, 50, 100), SHADES):
     ax.plot(x, aerial_image_1d(x=x, defocus=z, **P, **EUV), color=c, lw=2,
             label=f"defocus {z} nm (NILS {nils(**P, **EUV, defocus=z):.1f})")
-ax.set(xlabel="position (nm)", ylabel="relative intensity",
+ax.set(xlabel="position (nm)", ylabel="relative intensity", ylim=(0, 1.0),
        title="Aerial image, 22 nm lines and spaces, 13.5 nm, NA 0.33")
-ax.legend()
+ax.legend(loc="upper center", ncol=3, fontsize=9, columnspacing=1.2, handlelength=1.4)
 save(fig, "01_aerial_image")
 
 # 2. exposure latitude versus acid diffusion length -----------------------------------------
@@ -54,6 +56,7 @@ fig, ax = plt.subplots(figsize=(7, 3.8))
 ax.bar([f"{L:g}" for L in Ls], els, color=CYAN, width=0.55)
 ax.set(xlabel="acid diffusion length (nm, sweep parameter)", ylabel="exposure latitude (%)",
        title="More acid blur, less process margin")
+ax.grid(axis="x", visible=False)
 save(fig, "02_exposure_latitude")
 
 # 3. roughness versus dose ------------------------------------------------------------------
@@ -73,6 +76,10 @@ fig, ax = plt.subplots(figsize=(7, 3.8))
 ax.loglog(dl, lers, "o-", color=CYAN, lw=2, label="simulated LER (3 sigma)")
 ax.loglog(dl, lers[0] * (np.array(dl) / dl[0]) ** -0.5, "--", color=MUTED, label="pure shot-noise slope (-0.5)")
 ax.set(xlabel="dose (mJ/cm$^2$)", ylabel="line-edge roughness (nm)", title="Photon shot noise lowers roughness with dose")
+ax.set_xticks(dl, labels=[f"{v:g}" for v in dl])
+ax.set_yticks([1, 2, 3, 4], labels=["1", "2", "3", "4"])
+ax.xaxis.set_minor_formatter(NullFormatter())
+ax.yaxis.set_minor_formatter(NullFormatter())
 ax.legend()
 save(fig, "03_roughness_vs_dose")
 
@@ -93,4 +100,5 @@ for on in cases.values():
 fig, ax = plt.subplots(figsize=(7, 3.8))
 ax.bar(list(cases), vals, color=[CYAN] * 4 + ["#a5f3fc"], width=0.55)
 ax.set(ylabel="space-width roughness, 3 sigma (nm)", title="Which source of randomness limits roughness")
+ax.grid(axis="x", visible=False)
 save(fig, "04_noise_terms")
