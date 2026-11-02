@@ -3,15 +3,17 @@
 Imaging stays 1D (infinite lines, so the image is constant along y). Photons, acid yield, PAG
 count and quencher count can each be Poisson-random (see the `random_*` flags); the acid field is
 blurred, baked with the 2D PEB model and developed by a threshold. Edge positions along y give
-LER/LWR.
+LER/LWR. Quenching is either instant (pixelwise, before the bake) or a finite-rate second-order
+reaction during the bake (`quencher_rate_nm3_s`).
 
 `Stochastic()` defaults are UNSOURCED placeholders. `NAULLEAU_CAR` uses published modeling
 assumptions (see below). Diffusion lengths and the development threshold are placeholders either
 way. Use for trends and term rankings, not absolute predictions.
 """
 from dataclasses import dataclass, replace
+from typing import Optional
 import numpy as np
-from .bake import diffuse_periodic, peb_1d
+from .bake import diffuse_periodic, peb_1d, peb_quench
 from .pipeline import space_edges
 
 HC_EV_NM = 1239.84198      # h*c in eV nm
@@ -30,17 +32,24 @@ class Stochastic:
     random_yield: bool = True
     random_pag: bool = False
     random_quencher: bool = False
+    # finite-rate quenching (None = instant pixelwise neutralization before the bake):
+    thickness_nm: float = 35.0                    # film thickness, converts areal to volume density
+    quencher_rate_nm3_s: Optional[float] = None   # neutralization rate constant k_n (nm^3/s)
+    quencher_diff_nm: float = 0.0                 # quencher rms diffusion over the bake (0 = immobile)
+    quencher_ea_kcal: float = 0.0                 # activation energy of neutralization
+    pool: str = "hard"
 
     @classmethod
     def from_volumetric(cls, absorptivity_per_nm, thickness_nm, acids_per_photon,
                         pag_per_nm3, quencher_per_nm3=0.0, blur_nm=2.0,
-                        random_pag=True, random_quencher=True):
+                        random_pag=True, random_quencher=True, quencher_rate_nm3_s=None):
         """Build from bulk quantities: absorptivity (1/nm), densities (1/nm^3), film thickness (nm)."""
         return cls(absorbed_fraction=float(1.0 - np.exp(-absorptivity_per_nm * thickness_nm)),
                    acids_per_photon=acids_per_photon,
                    pag_per_nm2=pag_per_nm3 * thickness_nm,
                    quencher_per_nm2=quencher_per_nm3 * thickness_nm,
-                   blur_nm=blur_nm, random_pag=random_pag, random_quencher=random_quencher)
+                   blur_nm=blur_nm, random_pag=random_pag, random_quencher=random_quencher,
+                   thickness_nm=thickness_nm, quencher_rate_nm3_s=quencher_rate_nm3_s)
 
 
 # Inputs from Naulleau et al., Chem. Mater. 2026, 38, 6141 (DOI 10.1021/acs.chemmater.5c02771),
@@ -65,13 +74,8 @@ def mean_acid(img, dx, wavelength, dose, sto):
     return diffuse_periodic(np.clip(h, 0.0, 1.0), dx, sto.blur_nm)
 
 
-def generate_acids(img, dx, wavelength, dose, sto, n_y, rng):
-    """Noisy net acid fraction field, shape (len(img), n_y).
-
-    Photons -> events (acids) -> limited by available PAG -> minus quencher -> blur.
-    Each stage is Poisson or fixed at its mean according to the `random_*` flags.
-    Quenching is the fast pixelwise neutralization limit (before blur).
-    """
+def _draw(img, dx, wavelength, dose, sto, n_y, rng):
+    """Random counts per pixel: acids (limited by the PAG pool) and quencher (None if absent)."""
     shape = (len(img), n_y)
     mu = photons_per_nm2(dose, wavelength) * sto.absorbed_fraction * dx * dx * np.asarray(img)
     mu = np.repeat(mu[:, None], n_y, axis=1)
@@ -79,13 +83,46 @@ def generate_acids(img, dx, wavelength, dose, sto, n_y, rng):
     events = rng.poisson(photons * sto.acids_per_photon) if sto.random_yield else photons * sto.acids_per_photon
     pag_mean = sto.pag_per_nm2 * dx * dx
     pag = rng.poisson(pag_mean, size=shape) if sto.random_pag else pag_mean
-    acids = np.minimum(events, pag)
+    
+    if sto.pool == "smooth":
+        pag_arr = np.broadcast_to(np.asarray(pag, dtype=float), shape)
+        n_int = np.rint(pag_arr).astype(np.int64)
+        n_safe = np.maximum(n_int, 1)
+        scale = np.where(n_int > 0, pag_arr / n_safe, 0.0)          # keeps the mean for non-integer pools
+        p_hit = 1.0 - np.exp(-events / n_safe)                      # chance a given PAG is activated
+        acids = (rng.binomial(n_int, p_hit) if sto.random_yield else n_int * p_hit) * scale
+    else:
+        acids = np.minimum(events, pag)
+
+    
+    q = None
     if sto.quencher_per_nm2 > 0:
         q_mean = sto.quencher_per_nm2 * dx * dx
         q = rng.poisson(q_mean, size=shape) if sto.random_quencher else q_mean
+    return acids, q, pag_mean
+
+
+def generate_acids(img, dx, wavelength, dose, sto, n_y, rng):
+    """Noisy net acid fraction field, shape (len(img), n_y), with INSTANT pixelwise quenching.
+
+    Photons -> events (acids) -> limited by available PAG -> minus quencher -> blur.
+    Each stage is Poisson or fixed at its mean according to the `random_*` flags.
+    """
+    acids, q, pag_mean = _draw(img, dx, wavelength, dose, sto, n_y, rng)
+    if q is not None:
         acids = np.maximum(acids - q, 0.0)
-    h = np.clip(acids / pag_mean, 0.0, 1.0)
-    return diffuse_periodic(h, dx, sto.blur_nm)
+    return diffuse_periodic(np.clip(acids / pag_mean, 0.0, 1.0), dx, sto.blur_nm)
+
+
+def generate_fields(img, dx, wavelength, dose, sto, n_y, rng):
+    """(acid, quencher) fraction fields before the bake, for finite-rate quenching.
+
+    The acid is blurred by `blur_nm` (electron blur); the quencher is not.
+    """
+    acids, q, pag_mean = _draw(img, dx, wavelength, dose, sto, n_y, rng)
+    h = diffuse_periodic(np.clip(acids / pag_mean, 0.0, 1.0), dx, sto.blur_nm)
+    hq = np.zeros_like(h) if q is None else np.broadcast_to(q / pag_mean, h.shape).copy()
+    return h, hq
 
 
 def _bake(acid, dx, chem):
@@ -98,10 +135,20 @@ def mean_deprotection(img, dx, wavelength, dose, sto, chem):
 
 
 def stochastic_deprotection(img, dx, wavelength, dose, sto, chem, n_y, rng):
-    """If `sto` carries a quencher, it is already subtracted pixelwise, so chem.quencher is ignored."""
-    if sto.quencher_per_nm2 > 0:
-        chem = replace(chem, quencher=0.0)
-    return _bake(generate_acids(img, dx, wavelength, dose, sto, n_y, rng), dx, chem)
+    """Deprotected-fraction field. Any quencher in `sto` replaces chem.quencher (which is ignored).
+
+    quencher_rate_nm3_s None : instant pixelwise neutralization before the bake.
+    quencher_rate_nm3_s set  : finite-rate second-order neutralization during the bake.
+    """
+    if sto.quencher_rate_nm3_s is None:
+        if sto.quencher_per_nm2 > 0:
+            chem = replace(chem, quencher=0.0)
+        return _bake(generate_acids(img, dx, wavelength, dose, sto, n_y, rng), dx, chem)
+    h, hq = generate_fields(img, dx, wavelength, dose, sto, n_y, rng)
+    kappa = sto.quencher_rate_nm3_s * sto.pag_per_nm2 / sto.thickness_nm   # 1/s per unit fraction
+    return peb_quench(h, hq, dx, chem.peb_time_s, chem.peb_temp_c, chem.ea_kcal, chem.k_ref,
+                      kappa_ref=kappa, diff_len_nm=chem.diff_len_nm,
+                      quencher_diff_len_nm=sto.quencher_diff_nm, ea_n_kcal=sto.quencher_ea_kcal)
 
 
 def threshold_for_cd(x, d_mean, target_cd):

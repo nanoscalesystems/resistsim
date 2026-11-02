@@ -53,3 +53,53 @@ def peb_1d(acid, dx, time_s, temp_c, ea_kcal, k_ref, ref_temp_c=100.0,
             a = np.fft.irfftn(np.fft.rfftn(a, axes=axes) * kern, s=a.shape, axes=axes)
         protected *= np.exp(-k_eff * a * dt)
     return 1.0 - protected
+
+
+
+def _neutralize(u, v, kdt):
+    """Exact second-order neutralization A + Q -> inert over a step: du/dt = dv/dt = -k u v.
+
+    u, v: acid and quencher (same units); kdt = k * dt in units where u, v are used.
+    Returns updated (u, v). u - v is conserved.
+    """
+    d = u - v
+    with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
+        r = np.where(u > 0, (v / np.where(u > 0, u, 1.0)) * np.exp(-d * kdt), 0.0)
+        u_new = np.where(np.abs(d) < 1e-7, u / (1.0 + kdt * u), d / (1.0 - r))
+    u_new = np.where(u > 0, u_new, 0.0)
+    u_new = np.clip(np.nan_to_num(u_new, nan=0.0), 0.0, None)
+    v_new = np.clip(u_new - d, 0.0, None)
+    return u_new, v_new
+
+
+def peb_quench(acid, quencher, dx, time_s, temp_c, ea_kcal, k_ref, kappa_ref, ref_temp_c=100.0,
+               diff_len_nm=0.0, quencher_diff_len_nm=0.0, ea_n_kcal=0.0, n_steps=200):
+    """PEB with a finite-rate acid-quencher reaction. Returns the deprotected fraction (1D or 2D).
+
+    acid, quencher : fractions of the PAG loading (same normalization)
+    kappa_ref      : neutralization rate in 1/s per unit fraction at ref_temp_c, i.e.
+                     k_n [nm^3/s] x PAG density [1/nm^3]
+    ea_n_kcal      : activation energy of neutralization (0 = temperature independent)
+    quencher_diff_len_nm : quencher rms diffusion length over the bake (0 = immobile, as assumed
+                     by Houle et al. 2004); UNSOURCED sweep parameter when nonzero.
+    Per step: diffuse acid (and quencher), neutralize exactly, then deprotect.
+    """
+    u = np.clip(np.asarray(acid, dtype=float), 0.0, None)
+    v = np.clip(np.asarray(quencher, dtype=float), 0.0, None)
+    k_eff = k_ref * arrhenius_scale(ea_kcal, temp_c, ref_temp_c)
+    kappa = kappa_ref * arrhenius_scale(ea_n_kcal, temp_c, ref_temp_c)
+    dt = time_s / n_steps
+    axes = tuple(range(u.ndim))
+    ka = _kernel(u.shape, dx, diff_len_nm / np.sqrt(n_steps)) if diff_len_nm > 0 else None
+    kq = _kernel(u.shape, dx, quencher_diff_len_nm / np.sqrt(n_steps)) if quencher_diff_len_nm > 0 else None
+    protected = np.ones_like(u)
+    for _ in range(n_steps):
+        if ka is not None:
+            u = np.fft.irfftn(np.fft.rfftn(u, axes=axes) * ka, s=u.shape, axes=axes)
+        if kq is not None:
+            v = np.fft.irfftn(np.fft.rfftn(v, axes=axes) * kq, s=v.shape, axes=axes)
+        u, v = _neutralize(u, v, kappa * dt)
+        protected *= np.exp(-k_eff * u * dt)
+    return 1.0 - protected
+
+

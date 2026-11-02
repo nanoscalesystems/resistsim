@@ -65,7 +65,7 @@ def space_cd(x, d, d_th):
     return e[1] - e[0]
 
 
-def fem(optics, chem, doses, defoci, dx=0.25):
+def fem(optics, chem, doses, defoci, dx=0.25, n_steps=200):
     """Space CD (nm) on a dose x defocus grid; shape (len(doses), len(defoci))."""
     x = np.arange(-optics.pitch / 2, optics.pitch / 2, dx)
     out = np.zeros((len(doses), len(defoci)))
@@ -75,6 +75,6 @@ def fem(optics, chem, doses, defoci, dx=0.25):
         for i, e in enumerate(doses):
             acid = acid_fraction(img, e, chem.c)
             d = peb_1d(acid, dx, chem.peb_time_s, chem.peb_temp_c, chem.ea_kcal, chem.k_ref,
-                       diff_len_nm=chem.diff_len_nm, quencher=chem.quencher)
+                       diff_len_nm=chem.diff_len_nm, quencher=chem.quencher, n_steps=n_steps)
             out[i, j] = space_cd(x, d, chem.d_th)
     return out

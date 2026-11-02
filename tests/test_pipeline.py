@@ -27,3 +27,12 @@ def test_process_window_metrics():
     cd = np.array([[10, 12, 10], [21, 22, 21], [22, 22, 22], [23, 22, 23], [30, 32, 30]], float)
     pw = process_window(cd, doses, defoci, target=22.0, tol=0.10)
     assert pw["dof_nm"] == 40.0 and np.isclose(pw["el_pct"], 100 * 20 / 30)
+
+
+def test_fem_fewer_bake_steps_is_close_and_runs():
+    o = Optics(13.5, 0.33, 0.6, 44, 22)
+    ch = Chemistry(c=0.05, ea_kcal=30.0, k_ref=0.05, diff_len_nm=5.0)
+    doses, defoci = [20.0, 26.0, 32.0], [-50.0, 0.0, 50.0]
+    full = fem(o, ch, doses, defoci, n_steps=200)
+    quick = fem(o, ch, doses, defoci, n_steps=50)
+    assert quick.shape == full.shape and np.abs(quick - full).max() < 0.5
