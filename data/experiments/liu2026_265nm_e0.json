@@ -1,0 +1,277 @@
+{
+  "schema_version": 1,
+  "dataset_id": "liu2026-265nm-e0",
+  "title": "Liu et al. 2026: open-frame dose-to-clear observations",
+  "status": "transcribed published observations, not an EUV calibration",
+  "sources": {
+    "main": {
+      "doi": "10.1039/d6sc03643k",
+      "url": "https://doi.org/10.1039/d6sc03643k",
+      "locator": "Table 2, printed p.15462 (PDF p.5); non-clearing discussion p.15463",
+      "reviewed_pdf_sha256": "8841f31d1edf9d8f5ac68b60387d5c8d7e20d206dae7f3a008c29c8adbd062e3"
+    },
+    "si1": {
+      "doi": "10.1039/d6sc03643k",
+      "url": "https://doi.org/10.1039/d6sc03643k",
+      "locator": "Section 7.2 and Fig. S11, S1-55–S1-56; kinetics Section 4, S1-17 onward",
+      "reviewed_pdf_sha256": "7b85e58ae8e32544a39ed1766ef328939c3e9cec13e7f869089fca25e3631f18"
+    }
+  },
+  "experimental_conditions": {
+    "exposure": {
+      "wavelength_nm": 265,
+      "geometry": "open-frame",
+      "source": "si1",
+      "locator": "Fig. S11(a)"
+    },
+    "peb": {
+      "time_s": 60,
+      "temperature": "per observation",
+      "source": "si1",
+      "locator": "Fig. S11(a)"
+    },
+    "soft_bake": {
+      "temperature_c": 110,
+      "time_s": 60,
+      "source": "si1",
+      "locator": "Section 7.2 and Fig. S11(a)"
+    },
+    "development": {
+      "developer": "TMAH",
+      "concentration_wt_pct": 2.4,
+      "time_s": 60,
+      "rinse": "water",
+      "source": "si1",
+      "locator": "Fig. S11(a)"
+    },
+    "film": {
+      "reported_nominal_thickness_nm": 80,
+      "source": "main",
+      "locator": "text before Table 2",
+      "note": "Nominal value, not a separate measured thickness for every observation."
+    },
+    "formulation": {
+      "pag_loading_reported": "10 wt% PAG",
+      "quencher": "TOA",
+      "quencher_loading_reported": "10 mol% TOA",
+      "nominal_toa_per_pag": 0.1,
+      "source": "si1",
+      "locator": "Section 7.2 / Fig. S11(a); relative-to-PAG wording explicit in Fig. S14 caption",
+      "note": "Applying the nominal ratio as active acid subtraction is a model assumption; no neutralization rate is measured here."
+    }
+  },
+  "observations": [
+    {
+      "id": "liu2026-e0-01",
+      "resist_registry_key": "4a (adamantyl, reference)",
+      "pag": "TPS-PFBuS",
+      "pag_pfas_status": "PFAS-containing",
+      "peb_temperature_c": 90,
+      "e0_mj_cm2": 110,
+      "observation_type": "reported_clearing_dose",
+      "uncertainty_mj_cm2": null,
+      "uncertainty_note": "Not provided in Table 2; do not interpret missing uncertainty as zero.",
+      "source": "main",
+      "source_locator": "Table 2; ",
+      "non_clearing": null
+    },
+    {
+      "id": "liu2026-e0-02",
+      "resist_registry_key": "4a (adamantyl, reference)",
+      "pag": "TPS-PFBuS",
+      "pag_pfas_status": "PFAS-containing",
+      "peb_temperature_c": 100,
+      "e0_mj_cm2": 25,
+      "observation_type": "reported_clearing_dose",
+      "uncertainty_mj_cm2": null,
+      "uncertainty_note": "Not provided in Table 2; do not interpret missing uncertainty as zero.",
+      "source": "main",
+      "source_locator": "Table 2; ",
+      "non_clearing": null
+    },
+    {
+      "id": "liu2026-e0-03",
+      "resist_registry_key": "27a (bicyclo[3.3.1])",
+      "pag": "TPS-PFBuS",
+      "pag_pfas_status": "PFAS-containing",
+      "peb_temperature_c": 100,
+      "e0_mj_cm2": 19,
+      "observation_type": "reported_clearing_dose",
+      "uncertainty_mj_cm2": null,
+      "uncertainty_note": "Not provided in Table 2; do not interpret missing uncertainty as zero.",
+      "source": "main",
+      "source_locator": "Table 2; ",
+      "non_clearing": null
+    },
+    {
+      "id": "liu2026-e0-04",
+      "resist_registry_key": "28a (bicyclo[3.3.3])",
+      "pag": "TPS-PFBuS",
+      "pag_pfas_status": "PFAS-containing",
+      "peb_temperature_c": 80,
+      "e0_mj_cm2": 8,
+      "observation_type": "reported_clearing_dose",
+      "uncertainty_mj_cm2": null,
+      "uncertainty_note": "Not provided in Table 2; do not interpret missing uncertainty as zero.",
+      "source": "main",
+      "source_locator": "Table 2; ",
+      "non_clearing": null
+    },
+    {
+      "id": "liu2026-e0-05",
+      "resist_registry_key": "29a (tricyclo[6.3.1.0^3,9])",
+      "pag": "TPS-PFBuS",
+      "pag_pfas_status": "PFAS-containing",
+      "peb_temperature_c": 80,
+      "e0_mj_cm2": 12,
+      "observation_type": "reported_clearing_dose",
+      "uncertainty_mj_cm2": null,
+      "uncertainty_note": "Not provided in Table 2; do not interpret missing uncertainty as zero.",
+      "source": "main",
+      "source_locator": "Table 2; ",
+      "non_clearing": null
+    },
+    {
+      "id": "liu2026-e0-06",
+      "resist_registry_key": "29a (tricyclo[6.3.1.0^3,9])",
+      "pag": "TPS-PFBuS",
+      "pag_pfas_status": "PFAS-containing",
+      "peb_temperature_c": 90,
+      "e0_mj_cm2": 6,
+      "observation_type": "reported_clearing_dose",
+      "uncertainty_mj_cm2": null,
+      "uncertainty_note": "Not provided in Table 2; do not interpret missing uncertainty as zero.",
+      "source": "main",
+      "source_locator": "Table 2; ",
+      "non_clearing": null
+    },
+    {
+      "id": "liu2026-e0-07",
+      "resist_registry_key": "4a (adamantyl, reference)",
+      "pag": "TPS-Ms",
+      "pag_pfas_status": "PFAS-free as reported",
+      "peb_temperature_c": 120,
+      "e0_mj_cm2": null,
+      "observation_type": "non_clearing_observation",
+      "uncertainty_mj_cm2": null,
+      "uncertainty_note": "Not provided in Table 2; do not interpret missing uncertainty as zero.",
+      "source": "main",
+      "source_locator": "Table 2; p.15463 text: films did not fully dissolve after exposure to over 500 mJ/cm² at 120°C",
+      "non_clearing": {
+        "reported_exposure_description": "over 500 mJ/cm²",
+        "exact_maximum_tested_dose_mj_cm2": null,
+        "conservative_lower_bound_mj_cm2": 500,
+        "note": "Not a measured E0 of 500 and not proof of infinite E0. Excluded from numeric fits."
+      }
+    },
+    {
+      "id": "liu2026-e0-08",
+      "resist_registry_key": "27a (bicyclo[3.3.1])",
+      "pag": "TPS-Ms",
+      "pag_pfas_status": "PFAS-free as reported",
+      "peb_temperature_c": 120,
+      "e0_mj_cm2": null,
+      "observation_type": "non_clearing_observation",
+      "uncertainty_mj_cm2": null,
+      "uncertainty_note": "Not provided in Table 2; do not interpret missing uncertainty as zero.",
+      "source": "main",
+      "source_locator": "Table 2; p.15463 text: films did not fully dissolve after exposure to over 500 mJ/cm² at 120°C",
+      "non_clearing": {
+        "reported_exposure_description": "over 500 mJ/cm²",
+        "exact_maximum_tested_dose_mj_cm2": null,
+        "conservative_lower_bound_mj_cm2": 500,
+        "note": "Not a measured E0 of 500 and not proof of infinite E0. Excluded from numeric fits."
+      }
+    },
+    {
+      "id": "liu2026-e0-09",
+      "resist_registry_key": "28a (bicyclo[3.3.3])",
+      "pag": "TPS-Ms",
+      "pag_pfas_status": "PFAS-free as reported",
+      "peb_temperature_c": 100,
+      "e0_mj_cm2": 57,
+      "observation_type": "reported_clearing_dose",
+      "uncertainty_mj_cm2": null,
+      "uncertainty_note": "Not provided in Table 2; do not interpret missing uncertainty as zero.",
+      "source": "main",
+      "source_locator": "Table 2; ",
+      "non_clearing": null
+    },
+    {
+      "id": "liu2026-e0-10",
+      "resist_registry_key": "29a (tricyclo[6.3.1.0^3,9])",
+      "pag": "TPS-Ms",
+      "pag_pfas_status": "PFAS-free as reported",
+      "peb_temperature_c": 110,
+      "e0_mj_cm2": 59,
+      "observation_type": "reported_clearing_dose",
+      "uncertainty_mj_cm2": null,
+      "uncertainty_note": "Not provided in Table 2; do not interpret missing uncertainty as zero.",
+      "source": "main",
+      "source_locator": "Table 2; ",
+      "non_clearing": null
+    },
+    {
+      "id": "liu2026-e0-11",
+      "resist_registry_key": "28a (bicyclo[3.3.3])",
+      "pag": "DTBPI-CampS",
+      "pag_pfas_status": "PFAS-free as reported",
+      "peb_temperature_c": 100,
+      "e0_mj_cm2": 138,
+      "observation_type": "reported_clearing_dose",
+      "uncertainty_mj_cm2": null,
+      "uncertainty_note": "Not provided in Table 2; do not interpret missing uncertainty as zero.",
+      "source": "main",
+      "source_locator": "Table 2; ",
+      "non_clearing": null
+    },
+    {
+      "id": "liu2026-e0-12",
+      "resist_registry_key": "29a (tricyclo[6.3.1.0^3,9])",
+      "pag": "DTBPI-CampS",
+      "pag_pfas_status": "PFAS-free as reported",
+      "peb_temperature_c": 120,
+      "e0_mj_cm2": 147,
+      "observation_type": "reported_clearing_dose",
+      "uncertainty_mj_cm2": null,
+      "uncertainty_note": "Not provided in Table 2; do not interpret missing uncertainty as zero.",
+      "source": "main",
+      "source_locator": "Table 2; ",
+      "non_clearing": null
+    }
+  ],
+  "model_assumptions": {
+    "c_cm2_mj": {
+      "status": "assumed sensitivity variable",
+      "values": [
+        0.005,
+        0.01,
+        0.015,
+        0.02,
+        0.03,
+        0.05
+      ]
+    },
+    "quencher_fraction": {
+      "value": 0.1,
+      "status": "model mapping of nominal formulation loading; instantaneous 1:1 neutralization assumed"
+    },
+    "clearing_deprotected_fraction": {
+      "value": 0.5,
+      "status": "assumed, not measured"
+    },
+    "activation_energy_kcal_mol": {
+      "value": 33.5,
+      "status": "measured solution-phase monomer value used as film proxy",
+      "source": "main",
+      "locator": "Table 2; SI1 Section 4 describes solution experiment"
+    },
+    "reference_temperature_c": 100
+  },
+  "limitations": [
+    "No EUV data in this dataset.",
+    "Dose-to-clear is an observed development endpoint, not a direct acid-yield or deprotection measurement.",
+    "A numerical two-point fit is not independent validation.",
+    "No measured exposure coefficient, film clearing conversion or calibrated diffusion coefficient established by this dataset."
+  ]
+}

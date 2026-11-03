@@ -65,11 +65,26 @@ resist, and 3D mask effects.
 
 ## PFAS-free resists
 
-`registry.py` holds published deprotection activation energies and dose-to-clear data for a PFAS PAG and
-two PFAS-free PAGs, and `calibration.py` fits effective rates to them. This supports *relative* comparisons
-between PAGs. It does not predict absolute behavior, cannot separate acid strength from quantum yield,
-diffusion or quenching, and is not validated for EUV. No sourced acid diffusion value for PFAS-free PAGs is
-built in yet.
+`registry.py` holds published monomer activation energies and dose-to-clear observations for a PFAS-containing PAG and two reported PFAS-free PAGs. `calibration.py` fits conditional effective rates. These rates depend on assumed acid generation, quenching and clearing conversion; their ratios are not independently measured PAG reaction-rate ratios or validated performance rankings.
+
+### Experimental evidence and consistency checks
+
+The source-traceable [265 nm dataset](data/experiments/liu2026_265nm_e0.json) records Table 2 observations and supplementary experimental conditions from Liu et al. (DOI 10.1039/d6sc03643k). Numerical E0 observations, non-clearing observations, solution-phase kinetics, fitted values and assumptions are kept distinct. No independent uncertainty is invented for observations without reported error bars.
+
+Run the [calibration consistency diagnostic](docs/calibration-evidence.md):
+
+```bash
+python scripts/calibration_consistency.py
+python -m unittest discover -s tests -p test_calibration_evidence.py -v
+```
+
+Under the existing C=0.05, Q=0.10 and monomer-Ea proxy assumptions, fitting the 4a / TPS-PFBuS observation at 100°C does not reproduce clearing at 90°C. Varying C changes that result. This is a sensitivity diagnostic, not a newly validated parameter set. Simulator defaults remain unchanged. No sourced PFAS-free acid diffusion value or EUV calibration is established by this dataset.
+
+## Browser interface
+
+A Pyodide interface has been implemented in the separate Nanoscale Systems Astro website project at `/research/resistsim/simulator/`. It provides automatic optical previews and button-driven deterministic exposure/bake calculations, with worker execution, loading status, mobile layout and exports. This describes the implementation; deployment status is managed in the website project.
+
+The interface uses the Python package through a browser adapter. It currently uses illustrative chemistry constants rather than selecting calibrated formulations from the literature registry. Desktop/browser agreement checks verify numerical execution for tested cases, not experimental accuracy. Finite-rate quenching, 2D stochastics and failure counting are available in the Python package but are not exposed in that interface.
 
 ## Limitations (please read)
 
@@ -106,12 +121,11 @@ built in yet.
 ## Roadmap (planned, not promised)
 
 Calibration of the deprotection chain; a rare-event failure estimator; a dissolution model with a depth
-dimension; an interactive in-browser demo; comparison with published process-window data; 2D imaging.
+dimension; evidence-backed browser presets; comparison with published process-window data; 2D imaging.
 
 ## Data provenance
 
-Every equation and parameter comes from public literature listed in `REFERENCES.md`. No proprietary or
-confidential data are used. Values read off published figures, if any are added, will be labeled as such.
+Literature sources are listed in `REFERENCES.md`; some parameters are explicitly assumed or fitted rather than measured. The experimental dataset and diagnostic document those distinctions and source locations. No proprietary or confidential data are used. Future values digitized from figures must be labeled as digitized, with uncertainty and extraction method.
 
 ## Related open-source work
 
