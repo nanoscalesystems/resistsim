@@ -1,0 +1,782 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Resistsim · Experimental evidence</title><style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#071014;color:#dce9ef}body{max-width:1200px;margin:auto;padding:24px}h1{font-size:clamp(1.8rem,5vw,3rem)}h2{color:#64ddeb}p{line-height:1.6}nav{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}button{font:inherit;color:inherit;background:#14262e;border:1px solid #44606c;padding:12px;cursor:pointer;border-radius:6px}button[aria-pressed=true]{background:#135d6a;border-color:#64ddeb}button:focus-visible{outline:3px solid white}.note{padding:14px;border-left:3px solid #64ddeb;background:#10232b}.scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{padding:12px;text-align:left;border-bottom:1px solid #29404b}th{background:#10232b}details{margin:20px 0;padding:15px;border:1px solid #29404b}summary{cursor:pointer}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.85rem}a{color:#64ddeb}code{overflow-wrap:anywhere}[hidden]{display:none}footer{margin-top:32px;color:#a8bdc7}
+</style><header><p>NANOSCALE SYSTEMS / RESISTSIM</p><h1>Experimental evidence</h1><p>Explore measured patterning, clearing doses and reaction kinetics. Each dataset retains its formulation, processing conditions and limitations.</p></header><nav aria-label="Evidence views"><button aria-pressed="true" data-view="patterning">Fluorine-free patterning</button><button aria-pressed="false" data-view="chemistry">Clearing dose &amp; kinetics</button><button aria-pressed="false" data-view="euv">EUV measurements</button></nav><noscript><p>Enable JavaScript to switch views; source JSON remains available in the repository.</p></noscript><section id="patterning"><h2>Fluorine-free patterning</h2><p>AZ FZero 3000 · i-line · NA 0.16 · thick-film packaging. Author-reported fluorine-free formulation.</p><p class="note">Profile ΔCD compares different heights in the resist. It is not mask-to-print bias. These exposures are not clearing doses.</p><div class="scroll"><table><thead><tr><th scope="col">Film (µm)</th><th scope="col">Pattern</th><th scope="col">Nominal CD (µm)</th><th scope="col">Bottom CD (µm)</th><th scope="col">Profile ΔCD (%)</th><th scope="col">Patterning dose (mJ/cm²)</th></tr></thead><tbody><tr><td>30</td><td>contact hole</td><td>10</td><td>10.174</td><td>0.01</td><td>500</td></tr><tr><td>30</td><td>contact hole</td><td>8</td><td>8.249</td><td>0.02</td><td>500</td></tr><tr><td>30</td><td>contact hole</td><td>6</td><td>6.37</td><td>0.72</td><td>500</td></tr><tr><td>30</td><td>contact hole</td><td>5</td><td>5.041</td><td>5.46</td><td>500</td></tr><tr><td>30</td><td>contact hole</td><td>4</td><td>3.987</td><td>9.2</td><td>500</td></tr><tr><td>30</td><td>contact hole</td><td>3.5</td><td>3.804</td><td>7.23</td><td>500</td></tr><tr><td>30</td><td>line/space</td><td>10</td><td>10.036</td><td>0</td><td>550</td></tr><tr><td>30</td><td>line/space</td><td>8</td><td>8.066</td><td>3.41</td><td>550</td></tr><tr><td>30</td><td>line/space</td><td>6</td><td>6.141</td><td>6.71</td><td>550</td></tr><tr><td>30</td><td>line/space</td><td>5</td><td>5.041</td><td>7.28</td><td>550</td></tr><tr><td>30</td><td>line/space</td><td>4.5</td><td>4.499</td><td>9.82</td><td>550</td></tr><tr><td>100</td><td>contact hole</td><td>50</td><td>51.406</td><td>-2.43</td><td>800</td></tr><tr><td>100</td><td>contact hole</td><td>40</td><td>40.469</td><td>-0.77</td><td>800</td></tr><tr><td>100</td><td>contact hole</td><td>30</td><td>30.625</td><td>1.02</td><td>800</td></tr><tr><td>100</td><td>contact hole</td><td>20</td><td>20.937</td><td>2.24</td><td>800</td></tr><tr><td>100</td><td>contact hole</td><td>15</td><td>15.937</td><td>0.99</td><td>800</td></tr><tr><td>100</td><td>contact hole</td><td>10</td><td>8.125</td><td>38.46</td><td>800</td></tr></tbody></table></div><p><a href="https://doi.org/10.1117/12.3050807">Lu et al., SPIE 2025</a> · Tables 1–3. The 100 µm film / nominal 10 µm hole has poor profile ΔCD; its inclusion is not a successful-resolution claim.</p><details><summary>Source data, conditions and limitations</summary><pre>{
+  &quot;dataset_id&quot;: &quot;lu2025-fluorine-free-iline&quot;,
+  &quot;evidence_type&quot;: &quot;reported_patterning_measurements&quot;,
+  &quot;source&quot;: {
+    &quot;title&quot;: &quot;Fluorine-free i-line thick film photoresist for advanced semiconductor packaging&quot;,
+    &quot;doi&quot;: &quot;10.1117/12.3050807&quot;,
+    &quot;locator&quot;: &quot;Tables 1\u20133, PDF pp.3\u20134&quot;,
+    &quot;sha256&quot;: &quot;c69799fd01498841f6a65e0f56dd557783224429f0cae18e6acd068d51d180c3&quot;
+  },
+  &quot;conditions&quot;: {
+    &quot;formulation&quot;: &quot;AZ FZero 3000&quot;,
+    &quot;pfas_status&quot;: &quot;fluorine-free, author-reported&quot;,
+    &quot;exposure&quot;: &quot;i-line&quot;,
+    &quot;na&quot;: 0.16,
+    &quot;developer&quot;: &quot;0.26 N TMAH&quot;
+  },
+  &quot;limitations&quot;: [
+    &quot;Patterning exposure is not dose-to-clear.&quot;,
+    &quot;Profile delta CD = (top 80% CD - bottom CD)/bottom CD * 100, not mask-to-print bias.&quot;,
+    &quot;Bake recipe, quantitative kinetics and uncertainties are not supplied for calibration.&quot;,
+    &quot;Table 2 header says Contact Hole but table title and discussion identify line/space; stored as line/space.&quot;,
+    &quot;100 um film / nominal 10 um hole is retained as a poor-profile observation, not a successful resolution claim.&quot;
+  ],
+  &quot;observations&quot;: [
+    {
+      &quot;id&quot;: &quot;iline-t1-10&quot;,
+      &quot;source_table&quot;: 1,
+      &quot;film_thickness_um&quot;: 30,
+      &quot;pattern&quot;: &quot;contact hole&quot;,
+      &quot;nominal_cd_um&quot;: 10,
+      &quot;bottom_cd_um&quot;: 10.174,
+      &quot;profile_delta_cd_pct&quot;: 0.01,
+      &quot;exposure_mj_cm2&quot;: 500,
+      &quot;focus_um&quot;: -12,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t1-8&quot;,
+      &quot;source_table&quot;: 1,
+      &quot;film_thickness_um&quot;: 30,
+      &quot;pattern&quot;: &quot;contact hole&quot;,
+      &quot;nominal_cd_um&quot;: 8,
+      &quot;bottom_cd_um&quot;: 8.249,
+      &quot;profile_delta_cd_pct&quot;: 0.02,
+      &quot;exposure_mj_cm2&quot;: 500,
+      &quot;focus_um&quot;: -12,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t1-6&quot;,
+      &quot;source_table&quot;: 1,
+      &quot;film_thickness_um&quot;: 30,
+      &quot;pattern&quot;: &quot;contact hole&quot;,
+      &quot;nominal_cd_um&quot;: 6,
+      &quot;bottom_cd_um&quot;: 6.37,
+      &quot;profile_delta_cd_pct&quot;: 0.72,
+      &quot;exposure_mj_cm2&quot;: 500,
+      &quot;focus_um&quot;: -12,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t1-5&quot;,
+      &quot;source_table&quot;: 1,
+      &quot;film_thickness_um&quot;: 30,
+      &quot;pattern&quot;: &quot;contact hole&quot;,
+      &quot;nominal_cd_um&quot;: 5,
+      &quot;bottom_cd_um&quot;: 5.041,
+      &quot;profile_delta_cd_pct&quot;: 5.46,
+      &quot;exposure_mj_cm2&quot;: 500,
+      &quot;focus_um&quot;: -12,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t1-4&quot;,
+      &quot;source_table&quot;: 1,
+      &quot;film_thickness_um&quot;: 30,
+      &quot;pattern&quot;: &quot;contact hole&quot;,
+      &quot;nominal_cd_um&quot;: 4,
+      &quot;bottom_cd_um&quot;: 3.987,
+      &quot;profile_delta_cd_pct&quot;: 9.2,
+      &quot;exposure_mj_cm2&quot;: 500,
+      &quot;focus_um&quot;: -12,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t1-3.5&quot;,
+      &quot;source_table&quot;: 1,
+      &quot;film_thickness_um&quot;: 30,
+      &quot;pattern&quot;: &quot;contact hole&quot;,
+      &quot;nominal_cd_um&quot;: 3.5,
+      &quot;bottom_cd_um&quot;: 3.804,
+      &quot;profile_delta_cd_pct&quot;: 7.23,
+      &quot;exposure_mj_cm2&quot;: 500,
+      &quot;focus_um&quot;: -12,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t2-10&quot;,
+      &quot;source_table&quot;: 2,
+      &quot;film_thickness_um&quot;: 30,
+      &quot;pattern&quot;: &quot;line/space&quot;,
+      &quot;nominal_cd_um&quot;: 10,
+      &quot;bottom_cd_um&quot;: 10.036,
+      &quot;profile_delta_cd_pct&quot;: 0,
+      &quot;exposure_mj_cm2&quot;: 550,
+      &quot;focus_um&quot;: -12,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t2-8&quot;,
+      &quot;source_table&quot;: 2,
+      &quot;film_thickness_um&quot;: 30,
+      &quot;pattern&quot;: &quot;line/space&quot;,
+      &quot;nominal_cd_um&quot;: 8,
+      &quot;bottom_cd_um&quot;: 8.066,
+      &quot;profile_delta_cd_pct&quot;: 3.41,
+      &quot;exposure_mj_cm2&quot;: 550,
+      &quot;focus_um&quot;: -12,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t2-6&quot;,
+      &quot;source_table&quot;: 2,
+      &quot;film_thickness_um&quot;: 30,
+      &quot;pattern&quot;: &quot;line/space&quot;,
+      &quot;nominal_cd_um&quot;: 6,
+      &quot;bottom_cd_um&quot;: 6.141,
+      &quot;profile_delta_cd_pct&quot;: 6.71,
+      &quot;exposure_mj_cm2&quot;: 550,
+      &quot;focus_um&quot;: -12,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t2-5&quot;,
+      &quot;source_table&quot;: 2,
+      &quot;film_thickness_um&quot;: 30,
+      &quot;pattern&quot;: &quot;line/space&quot;,
+      &quot;nominal_cd_um&quot;: 5,
+      &quot;bottom_cd_um&quot;: 5.041,
+      &quot;profile_delta_cd_pct&quot;: 7.28,
+      &quot;exposure_mj_cm2&quot;: 550,
+      &quot;focus_um&quot;: -12,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t2-4.5&quot;,
+      &quot;source_table&quot;: 2,
+      &quot;film_thickness_um&quot;: 30,
+      &quot;pattern&quot;: &quot;line/space&quot;,
+      &quot;nominal_cd_um&quot;: 4.5,
+      &quot;bottom_cd_um&quot;: 4.499,
+      &quot;profile_delta_cd_pct&quot;: 9.82,
+      &quot;exposure_mj_cm2&quot;: 550,
+      &quot;focus_um&quot;: -12,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t3-50&quot;,
+      &quot;source_table&quot;: 3,
+      &quot;film_thickness_um&quot;: 100,
+      &quot;pattern&quot;: &quot;contact hole&quot;,
+      &quot;nominal_cd_um&quot;: 50,
+      &quot;bottom_cd_um&quot;: 51.406,
+      &quot;profile_delta_cd_pct&quot;: -2.43,
+      &quot;exposure_mj_cm2&quot;: 800,
+      &quot;focus_um&quot;: 0,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t3-40&quot;,
+      &quot;source_table&quot;: 3,
+      &quot;film_thickness_um&quot;: 100,
+      &quot;pattern&quot;: &quot;contact hole&quot;,
+      &quot;nominal_cd_um&quot;: 40,
+      &quot;bottom_cd_um&quot;: 40.469,
+      &quot;profile_delta_cd_pct&quot;: -0.77,
+      &quot;exposure_mj_cm2&quot;: 800,
+      &quot;focus_um&quot;: 0,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t3-30&quot;,
+      &quot;source_table&quot;: 3,
+      &quot;film_thickness_um&quot;: 100,
+      &quot;pattern&quot;: &quot;contact hole&quot;,
+      &quot;nominal_cd_um&quot;: 30,
+      &quot;bottom_cd_um&quot;: 30.625,
+      &quot;profile_delta_cd_pct&quot;: 1.02,
+      &quot;exposure_mj_cm2&quot;: 800,
+      &quot;focus_um&quot;: 0,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t3-20&quot;,
+      &quot;source_table&quot;: 3,
+      &quot;film_thickness_um&quot;: 100,
+      &quot;pattern&quot;: &quot;contact hole&quot;,
+      &quot;nominal_cd_um&quot;: 20,
+      &quot;bottom_cd_um&quot;: 20.937,
+      &quot;profile_delta_cd_pct&quot;: 2.24,
+      &quot;exposure_mj_cm2&quot;: 800,
+      &quot;focus_um&quot;: 0,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t3-15&quot;,
+      &quot;source_table&quot;: 3,
+      &quot;film_thickness_um&quot;: 100,
+      &quot;pattern&quot;: &quot;contact hole&quot;,
+      &quot;nominal_cd_um&quot;: 15,
+      &quot;bottom_cd_um&quot;: 15.937,
+      &quot;profile_delta_cd_pct&quot;: 0.99,
+      &quot;exposure_mj_cm2&quot;: 800,
+      &quot;focus_um&quot;: 0,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;iline-t3-10&quot;,
+      &quot;source_table&quot;: 3,
+      &quot;film_thickness_um&quot;: 100,
+      &quot;pattern&quot;: &quot;contact hole&quot;,
+      &quot;nominal_cd_um&quot;: 10,
+      &quot;bottom_cd_um&quot;: 8.125,
+      &quot;profile_delta_cd_pct&quot;: 38.46,
+      &quot;exposure_mj_cm2&quot;: 800,
+      &quot;focus_um&quot;: 0,
+      &quot;uncertainty&quot;: null
+    }
+  ]
+}</pre></details></section>
+<section id="chemistry" hidden><h2>Clearing dose and solution kinetics</h2><h3>265 nm open-frame film measurements</h3><div class="scroll"><table><thead><tr><th scope="col">Resist</th><th scope="col">PAG</th><th scope="col">PEB (°C)</th><th scope="col">E₀ (mJ/cm²)</th><th scope="col">Observation type</th></tr></thead><tbody><tr><td>4a (adamantyl, reference)</td><td>TPS-PFBuS</td><td>90</td><td>110</td><td>reported_clearing_dose</td></tr><tr><td>4a (adamantyl, reference)</td><td>TPS-PFBuS</td><td>100</td><td>25</td><td>reported_clearing_dose</td></tr><tr><td>27a (bicyclo[3.3.1])</td><td>TPS-PFBuS</td><td>100</td><td>19</td><td>reported_clearing_dose</td></tr><tr><td>28a (bicyclo[3.3.3])</td><td>TPS-PFBuS</td><td>80</td><td>8</td><td>reported_clearing_dose</td></tr><tr><td>29a (tricyclo[6.3.1.0^3,9])</td><td>TPS-PFBuS</td><td>80</td><td>12</td><td>reported_clearing_dose</td></tr><tr><td>29a (tricyclo[6.3.1.0^3,9])</td><td>TPS-PFBuS</td><td>90</td><td>6</td><td>reported_clearing_dose</td></tr><tr><td>4a (adamantyl, reference)</td><td>TPS-Ms</td><td>120</td><td>Not reported</td><td>non_clearing_observation</td></tr><tr><td>27a (bicyclo[3.3.1])</td><td>TPS-Ms</td><td>120</td><td>Not reported</td><td>non_clearing_observation</td></tr><tr><td>28a (bicyclo[3.3.3])</td><td>TPS-Ms</td><td>100</td><td>57</td><td>reported_clearing_dose</td></tr><tr><td>29a (tricyclo[6.3.1.0^3,9])</td><td>TPS-Ms</td><td>110</td><td>59</td><td>reported_clearing_dose</td></tr><tr><td>28a (bicyclo[3.3.3])</td><td>DTBPI-CampS</td><td>100</td><td>138</td><td>reported_clearing_dose</td></tr><tr><td>29a (tricyclo[6.3.1.0^3,9])</td><td>DTBPI-CampS</td><td>120</td><td>147</td><td>reported_clearing_dose</td></tr></tbody></table></div><p class="note">Non-clearing entries have no numeric E₀. Their source lower bounds remain in the evidence. These are not EUV measurements.</p><details><summary>Source data, conditions and limitations</summary><pre>{
+  &quot;schema_version&quot;: 1,
+  &quot;dataset_id&quot;: &quot;liu2026-265nm-e0&quot;,
+  &quot;title&quot;: &quot;Liu et al. 2026: open-frame dose-to-clear observations&quot;,
+  &quot;status&quot;: &quot;transcribed published observations, not an EUV calibration&quot;,
+  &quot;sources&quot;: {
+    &quot;main&quot;: {
+      &quot;doi&quot;: &quot;10.1039/d6sc03643k&quot;,
+      &quot;url&quot;: &quot;https://doi.org/10.1039/d6sc03643k&quot;,
+      &quot;locator&quot;: &quot;Table 2, printed p.15462 (PDF p.5); non-clearing discussion p.15463&quot;,
+      &quot;reviewed_pdf_sha256&quot;: &quot;8841f31d1edf9d8f5ac68b60387d5c8d7e20d206dae7f3a008c29c8adbd062e3&quot;
+    },
+    &quot;si1&quot;: {
+      &quot;doi&quot;: &quot;10.1039/d6sc03643k&quot;,
+      &quot;url&quot;: &quot;https://doi.org/10.1039/d6sc03643k&quot;,
+      &quot;locator&quot;: &quot;Section 7.2 and Fig. S11, S1-55\u2013S1-56; kinetics Section 4, S1-17 onward&quot;,
+      &quot;reviewed_pdf_sha256&quot;: &quot;7b85e58ae8e32544a39ed1766ef328939c3e9cec13e7f869089fca25e3631f18&quot;
+    }
+  },
+  &quot;experimental_conditions&quot;: {
+    &quot;exposure&quot;: {
+      &quot;wavelength_nm&quot;: 265,
+      &quot;geometry&quot;: &quot;open-frame&quot;,
+      &quot;source&quot;: &quot;si1&quot;,
+      &quot;locator&quot;: &quot;Fig. S11(a)&quot;
+    },
+    &quot;peb&quot;: {
+      &quot;time_s&quot;: 60,
+      &quot;temperature&quot;: &quot;per observation&quot;,
+      &quot;source&quot;: &quot;si1&quot;,
+      &quot;locator&quot;: &quot;Fig. S11(a)&quot;
+    },
+    &quot;soft_bake&quot;: {
+      &quot;temperature_c&quot;: 110,
+      &quot;time_s&quot;: 60,
+      &quot;source&quot;: &quot;si1&quot;,
+      &quot;locator&quot;: &quot;Section 7.2 and Fig. S11(a)&quot;
+    },
+    &quot;development&quot;: {
+      &quot;developer&quot;: &quot;TMAH&quot;,
+      &quot;concentration_wt_pct&quot;: 2.4,
+      &quot;time_s&quot;: 60,
+      &quot;rinse&quot;: &quot;water&quot;,
+      &quot;source&quot;: &quot;si1&quot;,
+      &quot;locator&quot;: &quot;Fig. S11(a)&quot;
+    },
+    &quot;film&quot;: {
+      &quot;reported_nominal_thickness_nm&quot;: 80,
+      &quot;source&quot;: &quot;main&quot;,
+      &quot;locator&quot;: &quot;text before Table 2&quot;,
+      &quot;note&quot;: &quot;Nominal value, not a separate measured thickness for every observation.&quot;
+    },
+    &quot;formulation&quot;: {
+      &quot;pag_loading_reported&quot;: &quot;10 wt% PAG&quot;,
+      &quot;quencher&quot;: &quot;TOA&quot;,
+      &quot;quencher_loading_reported&quot;: &quot;10 mol% TOA&quot;,
+      &quot;nominal_toa_per_pag&quot;: 0.1,
+      &quot;source&quot;: &quot;si1&quot;,
+      &quot;locator&quot;: &quot;Section 7.2 / Fig. S11(a); relative-to-PAG wording explicit in Fig. S14 caption&quot;,
+      &quot;note&quot;: &quot;Applying the nominal ratio as active acid subtraction is a model assumption; no neutralization rate is measured here.&quot;
+    }
+  },
+  &quot;observations&quot;: [
+    {
+      &quot;id&quot;: &quot;liu2026-e0-01&quot;,
+      &quot;resist_registry_key&quot;: &quot;4a (adamantyl, reference)&quot;,
+      &quot;pag&quot;: &quot;TPS-PFBuS&quot;,
+      &quot;pag_pfas_status&quot;: &quot;PFAS-containing&quot;,
+      &quot;peb_temperature_c&quot;: 90,
+      &quot;e0_mj_cm2&quot;: 110,
+      &quot;observation_type&quot;: &quot;reported_clearing_dose&quot;,
+      &quot;uncertainty_mj_cm2&quot;: null,
+      &quot;uncertainty_note&quot;: &quot;Not provided in Table 2; do not interpret missing uncertainty as zero.&quot;,
+      &quot;source&quot;: &quot;main&quot;,
+      &quot;source_locator&quot;: &quot;Table 2; &quot;,
+      &quot;non_clearing&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;liu2026-e0-02&quot;,
+      &quot;resist_registry_key&quot;: &quot;4a (adamantyl, reference)&quot;,
+      &quot;pag&quot;: &quot;TPS-PFBuS&quot;,
+      &quot;pag_pfas_status&quot;: &quot;PFAS-containing&quot;,
+      &quot;peb_temperature_c&quot;: 100,
+      &quot;e0_mj_cm2&quot;: 25,
+      &quot;observation_type&quot;: &quot;reported_clearing_dose&quot;,
+      &quot;uncertainty_mj_cm2&quot;: null,
+      &quot;uncertainty_note&quot;: &quot;Not provided in Table 2; do not interpret missing uncertainty as zero.&quot;,
+      &quot;source&quot;: &quot;main&quot;,
+      &quot;source_locator&quot;: &quot;Table 2; &quot;,
+      &quot;non_clearing&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;liu2026-e0-03&quot;,
+      &quot;resist_registry_key&quot;: &quot;27a (bicyclo[3.3.1])&quot;,
+      &quot;pag&quot;: &quot;TPS-PFBuS&quot;,
+      &quot;pag_pfas_status&quot;: &quot;PFAS-containing&quot;,
+      &quot;peb_temperature_c&quot;: 100,
+      &quot;e0_mj_cm2&quot;: 19,
+      &quot;observation_type&quot;: &quot;reported_clearing_dose&quot;,
+      &quot;uncertainty_mj_cm2&quot;: null,
+      &quot;uncertainty_note&quot;: &quot;Not provided in Table 2; do not interpret missing uncertainty as zero.&quot;,
+      &quot;source&quot;: &quot;main&quot;,
+      &quot;source_locator&quot;: &quot;Table 2; &quot;,
+      &quot;non_clearing&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;liu2026-e0-04&quot;,
+      &quot;resist_registry_key&quot;: &quot;28a (bicyclo[3.3.3])&quot;,
+      &quot;pag&quot;: &quot;TPS-PFBuS&quot;,
+      &quot;pag_pfas_status&quot;: &quot;PFAS-containing&quot;,
+      &quot;peb_temperature_c&quot;: 80,
+      &quot;e0_mj_cm2&quot;: 8,
+      &quot;observation_type&quot;: &quot;reported_clearing_dose&quot;,
+      &quot;uncertainty_mj_cm2&quot;: null,
+      &quot;uncertainty_note&quot;: &quot;Not provided in Table 2; do not interpret missing uncertainty as zero.&quot;,
+      &quot;source&quot;: &quot;main&quot;,
+      &quot;source_locator&quot;: &quot;Table 2; &quot;,
+      &quot;non_clearing&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;liu2026-e0-05&quot;,
+      &quot;resist_registry_key&quot;: &quot;29a (tricyclo[6.3.1.0^3,9])&quot;,
+      &quot;pag&quot;: &quot;TPS-PFBuS&quot;,
+      &quot;pag_pfas_status&quot;: &quot;PFAS-containing&quot;,
+      &quot;peb_temperature_c&quot;: 80,
+      &quot;e0_mj_cm2&quot;: 12,
+      &quot;observation_type&quot;: &quot;reported_clearing_dose&quot;,
+      &quot;uncertainty_mj_cm2&quot;: null,
+      &quot;uncertainty_note&quot;: &quot;Not provided in Table 2; do not interpret missing uncertainty as zero.&quot;,
+      &quot;source&quot;: &quot;main&quot;,
+      &quot;source_locator&quot;: &quot;Table 2; &quot;,
+      &quot;non_clearing&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;liu2026-e0-06&quot;,
+      &quot;resist_registry_key&quot;: &quot;29a (tricyclo[6.3.1.0^3,9])&quot;,
+      &quot;pag&quot;: &quot;TPS-PFBuS&quot;,
+      &quot;pag_pfas_status&quot;: &quot;PFAS-containing&quot;,
+      &quot;peb_temperature_c&quot;: 90,
+      &quot;e0_mj_cm2&quot;: 6,
+      &quot;observation_type&quot;: &quot;reported_clearing_dose&quot;,
+      &quot;uncertainty_mj_cm2&quot;: null,
+      &quot;uncertainty_note&quot;: &quot;Not provided in Table 2; do not interpret missing uncertainty as zero.&quot;,
+      &quot;source&quot;: &quot;main&quot;,
+      &quot;source_locator&quot;: &quot;Table 2; &quot;,
+      &quot;non_clearing&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;liu2026-e0-07&quot;,
+      &quot;resist_registry_key&quot;: &quot;4a (adamantyl, reference)&quot;,
+      &quot;pag&quot;: &quot;TPS-Ms&quot;,
+      &quot;pag_pfas_status&quot;: &quot;PFAS-free as reported&quot;,
+      &quot;peb_temperature_c&quot;: 120,
+      &quot;e0_mj_cm2&quot;: null,
+      &quot;observation_type&quot;: &quot;non_clearing_observation&quot;,
+      &quot;uncertainty_mj_cm2&quot;: null,
+      &quot;uncertainty_note&quot;: &quot;Not provided in Table 2; do not interpret missing uncertainty as zero.&quot;,
+      &quot;source&quot;: &quot;main&quot;,
+      &quot;source_locator&quot;: &quot;Table 2; p.15463 text: films did not fully dissolve after exposure to over 500 mJ/cm\u00b2 at 120\u00b0C&quot;,
+      &quot;non_clearing&quot;: {
+        &quot;reported_exposure_description&quot;: &quot;over 500 mJ/cm\u00b2&quot;,
+        &quot;exact_maximum_tested_dose_mj_cm2&quot;: null,
+        &quot;conservative_lower_bound_mj_cm2&quot;: 500,
+        &quot;note&quot;: &quot;Not a measured E0 of 500 and not proof of infinite E0. Excluded from numeric fits.&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;liu2026-e0-08&quot;,
+      &quot;resist_registry_key&quot;: &quot;27a (bicyclo[3.3.1])&quot;,
+      &quot;pag&quot;: &quot;TPS-Ms&quot;,
+      &quot;pag_pfas_status&quot;: &quot;PFAS-free as reported&quot;,
+      &quot;peb_temperature_c&quot;: 120,
+      &quot;e0_mj_cm2&quot;: null,
+      &quot;observation_type&quot;: &quot;non_clearing_observation&quot;,
+      &quot;uncertainty_mj_cm2&quot;: null,
+      &quot;uncertainty_note&quot;: &quot;Not provided in Table 2; do not interpret missing uncertainty as zero.&quot;,
+      &quot;source&quot;: &quot;main&quot;,
+      &quot;source_locator&quot;: &quot;Table 2; p.15463 text: films did not fully dissolve after exposure to over 500 mJ/cm\u00b2 at 120\u00b0C&quot;,
+      &quot;non_clearing&quot;: {
+        &quot;reported_exposure_description&quot;: &quot;over 500 mJ/cm\u00b2&quot;,
+        &quot;exact_maximum_tested_dose_mj_cm2&quot;: null,
+        &quot;conservative_lower_bound_mj_cm2&quot;: 500,
+        &quot;note&quot;: &quot;Not a measured E0 of 500 and not proof of infinite E0. Excluded from numeric fits.&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;liu2026-e0-09&quot;,
+      &quot;resist_registry_key&quot;: &quot;28a (bicyclo[3.3.3])&quot;,
+      &quot;pag&quot;: &quot;TPS-Ms&quot;,
+      &quot;pag_pfas_status&quot;: &quot;PFAS-free as reported&quot;,
+      &quot;peb_temperature_c&quot;: 100,
+      &quot;e0_mj_cm2&quot;: 57,
+      &quot;observation_type&quot;: &quot;reported_clearing_dose&quot;,
+      &quot;uncertainty_mj_cm2&quot;: null,
+      &quot;uncertainty_note&quot;: &quot;Not provided in Table 2; do not interpret missing uncertainty as zero.&quot;,
+      &quot;source&quot;: &quot;main&quot;,
+      &quot;source_locator&quot;: &quot;Table 2; &quot;,
+      &quot;non_clearing&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;liu2026-e0-10&quot;,
+      &quot;resist_registry_key&quot;: &quot;29a (tricyclo[6.3.1.0^3,9])&quot;,
+      &quot;pag&quot;: &quot;TPS-Ms&quot;,
+      &quot;pag_pfas_status&quot;: &quot;PFAS-free as reported&quot;,
+      &quot;peb_temperature_c&quot;: 110,
+      &quot;e0_mj_cm2&quot;: 59,
+      &quot;observation_type&quot;: &quot;reported_clearing_dose&quot;,
+      &quot;uncertainty_mj_cm2&quot;: null,
+      &quot;uncertainty_note&quot;: &quot;Not provided in Table 2; do not interpret missing uncertainty as zero.&quot;,
+      &quot;source&quot;: &quot;main&quot;,
+      &quot;source_locator&quot;: &quot;Table 2; &quot;,
+      &quot;non_clearing&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;liu2026-e0-11&quot;,
+      &quot;resist_registry_key&quot;: &quot;28a (bicyclo[3.3.3])&quot;,
+      &quot;pag&quot;: &quot;DTBPI-CampS&quot;,
+      &quot;pag_pfas_status&quot;: &quot;PFAS-free as reported&quot;,
+      &quot;peb_temperature_c&quot;: 100,
+      &quot;e0_mj_cm2&quot;: 138,
+      &quot;observation_type&quot;: &quot;reported_clearing_dose&quot;,
+      &quot;uncertainty_mj_cm2&quot;: null,
+      &quot;uncertainty_note&quot;: &quot;Not provided in Table 2; do not interpret missing uncertainty as zero.&quot;,
+      &quot;source&quot;: &quot;main&quot;,
+      &quot;source_locator&quot;: &quot;Table 2; &quot;,
+      &quot;non_clearing&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;liu2026-e0-12&quot;,
+      &quot;resist_registry_key&quot;: &quot;29a (tricyclo[6.3.1.0^3,9])&quot;,
+      &quot;pag&quot;: &quot;DTBPI-CampS&quot;,
+      &quot;pag_pfas_status&quot;: &quot;PFAS-free as reported&quot;,
+      &quot;peb_temperature_c&quot;: 120,
+      &quot;e0_mj_cm2&quot;: 147,
+      &quot;observation_type&quot;: &quot;reported_clearing_dose&quot;,
+      &quot;uncertainty_mj_cm2&quot;: null,
+      &quot;uncertainty_note&quot;: &quot;Not provided in Table 2; do not interpret missing uncertainty as zero.&quot;,
+      &quot;source&quot;: &quot;main&quot;,
+      &quot;source_locator&quot;: &quot;Table 2; &quot;,
+      &quot;non_clearing&quot;: null
+    }
+  ],
+  &quot;model_assumptions&quot;: {
+    &quot;c_cm2_mj&quot;: {
+      &quot;status&quot;: &quot;assumed sensitivity variable&quot;,
+      &quot;values&quot;: [
+        0.005,
+        0.01,
+        0.015,
+        0.02,
+        0.03,
+        0.05
+      ]
+    },
+    &quot;quencher_fraction&quot;: {
+      &quot;value&quot;: 0.1,
+      &quot;status&quot;: &quot;model mapping of nominal formulation loading; instantaneous 1:1 neutralization assumed&quot;
+    },
+    &quot;clearing_deprotected_fraction&quot;: {
+      &quot;value&quot;: 0.5,
+      &quot;status&quot;: &quot;assumed, not measured&quot;
+    },
+    &quot;activation_energy_kcal_mol&quot;: {
+      &quot;value&quot;: 33.5,
+      &quot;status&quot;: &quot;measured solution-phase monomer value used as film proxy&quot;,
+      &quot;source&quot;: &quot;main&quot;,
+      &quot;locator&quot;: &quot;Table 2; SI1 Section 4 describes solution experiment&quot;
+    },
+    &quot;reference_temperature_c&quot;: 100
+  },
+  &quot;limitations&quot;: [
+    &quot;No EUV data in this dataset.&quot;,
+    &quot;Dose-to-clear is an observed development endpoint, not a direct acid-yield or deprotection measurement.&quot;,
+    &quot;A numerical two-point fit is not independent validation.&quot;,
+    &quot;No measured exposure coefficient, film clearing conversion or calibrated diffusion coefficient established by this dataset.&quot;
+  ]
+}</pre></details><h3>Solution kinetics</h3><div class="scroll"><table><thead><tr><th scope="col">Monomer</th><th scope="col">Eₐ (kcal/mol)</th><th scope="col">Published fit SE (kcal/mol)</th><th scope="col">Half-life at 90°C / 1 M acid (s)</th></tr></thead><tbody><tr><td>13</td><td>35</td><td>0.4</td><td>1222.2</td></tr><tr><td>1</td><td>33.5</td><td>0.2</td><td>1105.9</td></tr><tr><td>14</td><td>28.3</td><td>0.9</td><td>14.4</td></tr><tr><td>15a</td><td>27.5</td><td>0.2</td><td>173.2</td></tr></tbody></table></div><p>Independent solution-phase evidence from Step 2. Its measured rates do not directly set film reaction rates. Expand the source record for all measurements and the preserved half-life discrepancy.</p><details><summary>Source data, conditions and limitations</summary><pre>{
+  &quot;schema_version&quot;: 1,
+  &quot;dataset_id&quot;: &quot;liu2026-solution-kinetics&quot;,
+  &quot;source&quot;: {
+    &quot;doi&quot;: &quot;10.1039/d6sc03643k&quot;,
+    &quot;document&quot;: &quot;Supporting Information 1&quot;,
+    &quot;locator&quot;: &quot;Section 4, S1-17\u2013S1-22; Tables S1\u2013S3&quot;,
+    &quot;sha256&quot;: &quot;7b85e58ae8e32544a39ed1766ef328939c3e9cec13e7f869089fca25e3631f18&quot;
+  },
+  &quot;scope&quot;: &quot;Monomer deprotection with pre-added MsOH in DMSO-d6; no photoexposure and no film calibration.&quot;,
+  &quot;units&quot;: {
+    &quot;k_prime&quot;: &quot;s^-1&quot;,
+    &quot;ms_oh&quot;: &quot;mol L^-1&quot;,
+    &quot;k_used&quot;: &quot;L mol^-1 s^-1&quot;,
+    &quot;k_as_printed&quot;: &quot;mol L^-1 s^-1&quot;,
+    &quot;correction_reason&quot;: &quot;Equation S2 divides k_prime by acid concentration. Preserve printed label but use dimensionally consistent second-order units.&quot;
+  },
+  &quot;temperature_note&quot;: &quot;Actual tabulated temperatures retained; reported monitoring resolution 0.5\u00b0C is not treated as a statistical uncertainty.&quot;,
+  &quot;half_life_conditions&quot;: {
+    &quot;temperature_c&quot;: 90,
+    &quot;acid_mol_L&quot;: 1
+  },
+  &quot;monomers&quot;: [
+    {
+      &quot;id&quot;: &quot;13&quot;,
+      &quot;rates&quot;: [
+        {
+          &quot;temperature_c&quot;: 83,
+          &quot;acid_mol_L&quot;: 0.1324,
+          &quot;k_prime_s_inv&quot;: 2.91e-05,
+          &quot;k_L_mol_s&quot;: 0.00022,
+          &quot;replicate_count&quot;: 2,
+          &quot;rate_standard_error&quot;: null
+        },
+        {
+          &quot;temperature_c&quot;: 90.5,
+          &quot;acid_mol_L&quot;: 0.0676,
+          &quot;k_prime_s_inv&quot;: 4.04e-05,
+          &quot;k_L_mol_s&quot;: 0.000597,
+          &quot;replicate_count&quot;: 2,
+          &quot;rate_standard_error&quot;: null
+        },
+        {
+          &quot;temperature_c&quot;: 100,
+          &quot;acid_mol_L&quot;: 0.0171,
+          &quot;k_prime_s_inv&quot;: 3.58e-05,
+          &quot;k_L_mol_s&quot;: 0.0021,
+          &quot;replicate_count&quot;: 2,
+          &quot;rate_standard_error&quot;: null
+        }
+      ],
+      &quot;published_ea_kcal_mol&quot;: 35,
+      &quot;published_ea_standard_error&quot;: 0.4,
+      &quot;adopted_half_life_s&quot;: 1222.2,
+      &quot;published_k90_L_mol_s&quot;: 0.000567,
+      &quot;notes&quot;: &quot;S1 rates are rounded summaries; raw replicate measurements and rate uncertainties are not provided in this table. S2 uncertainty is reported fit SE, not rate-point uncertainty.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;1&quot;,
+      &quot;rates&quot;: [
+        {
+          &quot;temperature_c&quot;: 83,
+          &quot;acid_mol_L&quot;: 0.1186,
+          &quot;k_prime_s_inv&quot;: 2.99e-05,
+          &quot;k_L_mol_s&quot;: 0.000252,
+          &quot;replicate_count&quot;: 2,
+          &quot;rate_standard_error&quot;: null
+        },
+        {
+          &quot;temperature_c&quot;: 89,
+          &quot;acid_mol_L&quot;: 0.0951,
+          &quot;k_prime_s_inv&quot;: 5.21e-05,
+          &quot;k_L_mol_s&quot;: 0.000548,
+          &quot;replicate_count&quot;: 2,
+          &quot;rate_standard_error&quot;: null
+        },
+        {
+          &quot;temperature_c&quot;: 100,
+          &quot;acid_mol_L&quot;: 0.018,
+          &quot;k_prime_s_inv&quot;: 3.94e-05,
+          &quot;k_L_mol_s&quot;: 0.00218,
+          &quot;replicate_count&quot;: 2,
+          &quot;rate_standard_error&quot;: null
+        }
+      ],
+      &quot;published_ea_kcal_mol&quot;: 33.5,
+      &quot;published_ea_standard_error&quot;: 0.2,
+      &quot;adopted_half_life_s&quot;: 1105.9,
+      &quot;published_k90_L_mol_s&quot;: 0.000627,
+      &quot;notes&quot;: &quot;S1 rates are rounded summaries; raw replicate measurements and rate uncertainties are not provided in this table. S2 uncertainty is reported fit SE, not rate-point uncertainty.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;14&quot;,
+      &quot;rates&quot;: [
+        {
+          &quot;temperature_c&quot;: 83,
+          &quot;acid_mol_L&quot;: 0.0238,
+          &quot;k_prime_s_inv&quot;: 0.000537,
+          &quot;k_L_mol_s&quot;: 0.0226,
+          &quot;replicate_count&quot;: 2,
+          &quot;rate_standard_error&quot;: null
+        },
+        {
+          &quot;temperature_c&quot;: 90.5,
+          &quot;acid_mol_L&quot;: 0.0135,
+          &quot;k_prime_s_inv&quot;: 0.000659,
+          &quot;k_L_mol_s&quot;: 0.0489,
+          &quot;replicate_count&quot;: 2,
+          &quot;rate_standard_error&quot;: null
+        },
+        {
+          &quot;temperature_c&quot;: 100,
+          &quot;acid_mol_L&quot;: 0.0035,
+          &quot;k_prime_s_inv&quot;: 0.000491,
+          &quot;k_L_mol_s&quot;: 0.14,
+          &quot;replicate_count&quot;: 2,
+          &quot;rate_standard_error&quot;: null
+        }
+      ],
+      &quot;published_ea_kcal_mol&quot;: 28.3,
+      &quot;published_ea_standard_error&quot;: 0.9,
+      &quot;adopted_half_life_s&quot;: 14.4,
+      &quot;published_k90_L_mol_s&quot;: 0.048,
+      &quot;notes&quot;: &quot;S1 rates are rounded summaries; raw replicate measurements and rate uncertainties are not provided in this table. S2 uncertainty is reported fit SE, not rate-point uncertainty.&quot;
+    },
+    {
+      &quot;id&quot;: &quot;15a&quot;,
+      &quot;rates&quot;: [
+        {
+          &quot;temperature_c&quot;: 83,
+          &quot;acid_mol_L&quot;: 0.0415,
+          &quot;k_prime_s_inv&quot;: 7.83e-05,
+          &quot;k_L_mol_s&quot;: 0.00189,
+          &quot;replicate_count&quot;: 1,
+          &quot;rate_standard_error&quot;: null
+        },
+        {
+          &quot;temperature_c&quot;: 90.5,
+          &quot;acid_mol_L&quot;: 0.021,
+          &quot;k_prime_s_inv&quot;: 8.94e-05,
+          &quot;k_L_mol_s&quot;: 0.00425,
+          &quot;replicate_count&quot;: 2,
+          &quot;rate_standard_error&quot;: null
+        },
+        {
+          &quot;temperature_c&quot;: 100,
+          &quot;acid_mol_L&quot;: 0.0106,
+          &quot;k_prime_s_inv&quot;: 0.000118,
+          &quot;k_L_mol_s&quot;: 0.0111,
+          &quot;replicate_count&quot;: 2,
+          &quot;rate_standard_error&quot;: null
+        }
+      ],
+      &quot;published_ea_kcal_mol&quot;: 27.5,
+      &quot;published_ea_standard_error&quot;: 0.2,
+      &quot;adopted_half_life_s&quot;: 173.2,
+      &quot;published_k90_L_mol_s&quot;: 0.004,
+      &quot;notes&quot;: &quot;S1 rates are rounded summaries; raw replicate measurements and rate uncertainties are not provided in this table. S2 uncertainty is reported fit SE, not rate-point uncertainty.&quot;
+    }
+  ],
+  &quot;discrepancy&quot;: {
+    &quot;monomer&quot;: &quot;13&quot;,
+    &quot;quantity&quot;: &quot;half_life_90c_1M_s&quot;,
+    &quot;adopted&quot;: 1222.2,
+    &quot;adopted_source&quot;: &quot;SI1 Table S3&quot;,
+    &quot;alternative_main_table2&quot;: 1122,
+    &quot;decision&quot;: &quot;Use supplementary value, agreed by project owner; rounded S1 Arrhenius reconstruction supports it. Retain main-table discrepancy for provenance.&quot;
+  }
+}</pre></details><p>Run <code>python scripts/solution_kinetics.py</code> to reconstruct the Arrhenius summaries.</p></section>
+<section id="euv" hidden><h2>EUV measurements</h2><p>Gen-2 paired formulations · 13.5 nm · 30 nm film on SiARC · PAB 110°C / 60 s · PEB 100°C / 60 s · 0.26 N TMAH / 30 s.</p><p class="note">Reported benchmarks, not calibrated simulator predictions. Dose to size ≠ dose to clear. Roughness definitions differ between pitches. Uncertainties and full process-window criteria are not supplied.</p><div class="scroll"><table><thead><tr><th scope="col">Formulation</th><th scope="col">Pitch (nm)</th><th scope="col">Dose to size (mJ/cm²)</th><th scope="col">EL (%)</th><th scope="col">DOF (nm)</th><th scope="col">Biased LWR (nm)</th><th scope="col">Unbiased LWR (nm)</th><th scope="col">Unbiased LER (nm)</th></tr></thead><tbody><tr><td>Non-PFAS Gen.2 EUV (PAG D)</td><td>36</td><td>48.7</td><td>10.2</td><td>140</td><td>4.25</td><td>Not reported</td><td>Not reported</td></tr><tr><td>PFAS Ref. D</td><td>36</td><td>48.8</td><td>9.3</td><td>140</td><td>4.43</td><td>Not reported</td><td>Not reported</td></tr><tr><td>Non-PFAS Gen.2 EUV (PAG D)</td><td>28</td><td>51.0</td><td>8.2</td><td>140</td><td>Not reported</td><td>2.54</td><td>1.75</td></tr><tr><td>PFAS Ref. D</td><td>28</td><td>50.9</td><td>6.9</td><td>140</td><td>Not reported</td><td>2.68</td><td>1.85</td></tr></tbody></table></div><p class="note">Source conflict: non-PFAS 28 nm-pitch uLER is 1.75 nm in Table 8, but 1.85 nm in the prose. Table value displayed provisionally; no author correction confirmed.</p><p><a href="https://doi.org/10.1117/12.3050881">Liu et al., SPIE 2025</a> · Tables 7–8. Proprietary composition and absolute loadings remain undisclosed.</p><details><summary>Source data, conditions and limitations</summary><pre>{
+  &quot;dataset_id&quot;: &quot;liu2025-nonpfas-euv-gen2&quot;,
+  &quot;evidence_type&quot;: &quot;reported_patterning_measurements&quot;,
+  &quot;source&quot;: {
+    &quot;title&quot;: &quot;Commercialization of Non-PFAS KrF and Development of Non-PFAS EUV Photoresists&quot;,
+    &quot;doi&quot;: &quot;10.1117/12.3050881&quot;,
+    &quot;locator&quot;: &quot;Table 7, Table 8; PDF pp.11\u201313&quot;,
+    &quot;sha256&quot;: &quot;32874b02ac4e9228525979c326cb1f1e20faa8f7b9cff6bf1fe3dc37703ff012&quot;
+  },
+  &quot;conditions&quot;: {
+    &quot;wavelength_nm&quot;: 13.5,
+    &quot;film_thickness_nm&quot;: 30,
+    &quot;underlayer&quot;: &quot;SiARC&quot;,
+    &quot;wafer_diameter_mm&quot;: 300,
+    &quot;scanner&quot;: &quot;ASML NXE3400B&quot;,
+    &quot;pab_c&quot;: 110,
+    &quot;pab_s&quot;: 60,
+    &quot;peb_c&quot;: 100,
+    &quot;peb_s&quot;: 60,
+    &quot;developer&quot;: &quot;0.26 N TMAH&quot;,
+    &quot;development_s&quot;: 30,
+    &quot;pattern&quot;: &quot;line/space&quot;,
+    &quot;pag_loading&quot;: &quot;equal molar between paired formulations; absolute loading undisclosed&quot;,
+    &quot;polymer&quot;: &quot;Poly-7&quot;,
+    &quot;quencher&quot;: &quot;Q-3&quot;,
+    &quot;solvents&quot;: [
+      &quot;Sol-4&quot;,
+      &quot;Sol-5&quot;
+    ]
+  },
+  &quot;limitations&quot;: [
+    &quot;Named formulations but proprietary structures/loadings are not disclosed.&quot;,
+    &quot;Dose-to-size is not dose-to-clear.&quot;,
+    &quot;Exact EL/DOF acceptance criteria and uncertainty/replicates are not specified in the extracted benchmark.&quot;,
+    &quot;PFAS status is author-reported; no independent analytical certification.&quot;,
+    &quot;Biased LWR at 36 nm pitch and unbiased LWR at 28 nm pitch are different metrics.&quot;,
+    &quot;No direct acid-yield or deprotection-time curve. No model defaults changed.&quot;
+  ],
+  &quot;discrepancies&quot;: [
+    {
+      &quot;metric&quot;: &quot;28nm non-PFAS uLER&quot;,
+      &quot;adopted_table_value_nm&quot;: 1.75,
+      &quot;conflicting_prose_value_nm&quot;: 1.85,
+      &quot;policy&quot;: &quot;Table 8 selected provisionally; conflict retained, not an author correction.&quot;
+    },
+    {
+      &quot;metric&quot;: &quot;reference identity&quot;,
+      &quot;note&quot;: &quot;Gen-2 prose mentions PFAS Ref. C once; Table 7 and Table 8 use PFAS Ref. D. Table labels retained.&quot;
+    }
+  ],
+  &quot;observations&quot;: [
+    {
+      &quot;id&quot;: &quot;euv-gen2-p36-0&quot;,
+      &quot;formulation&quot;: &quot;Non-PFAS Gen.2 EUV (PAG D)&quot;,
+      &quot;pfas_status&quot;: &quot;non-PFAS, author-reported&quot;,
+      &quot;pitch_nm&quot;: 36,
+      &quot;dose_to_size_mj_cm2&quot;: 48.7,
+      &quot;exposure_latitude_pct&quot;: 10.2,
+      &quot;dof_nm&quot;: 140,
+      &quot;biased_lwr_nm&quot;: 4.25,
+      &quot;unbiased_lwr_nm&quot;: null,
+      &quot;unbiased_ler_nm&quot;: null,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;euv-gen2-p36-1&quot;,
+      &quot;formulation&quot;: &quot;PFAS Ref. D&quot;,
+      &quot;pfas_status&quot;: &quot;PFAS reference&quot;,
+      &quot;pitch_nm&quot;: 36,
+      &quot;dose_to_size_mj_cm2&quot;: 48.8,
+      &quot;exposure_latitude_pct&quot;: 9.3,
+      &quot;dof_nm&quot;: 140,
+      &quot;biased_lwr_nm&quot;: 4.43,
+      &quot;unbiased_lwr_nm&quot;: null,
+      &quot;unbiased_ler_nm&quot;: null,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;euv-gen2-p28-0&quot;,
+      &quot;formulation&quot;: &quot;Non-PFAS Gen.2 EUV (PAG D)&quot;,
+      &quot;pfas_status&quot;: &quot;non-PFAS, author-reported&quot;,
+      &quot;pitch_nm&quot;: 28,
+      &quot;dose_to_size_mj_cm2&quot;: 51.0,
+      &quot;exposure_latitude_pct&quot;: 8.2,
+      &quot;dof_nm&quot;: 140,
+      &quot;biased_lwr_nm&quot;: null,
+      &quot;unbiased_lwr_nm&quot;: 2.54,
+      &quot;unbiased_ler_nm&quot;: 1.75,
+      &quot;uncertainty&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;euv-gen2-p28-1&quot;,
+      &quot;formulation&quot;: &quot;PFAS Ref. D&quot;,
+      &quot;pfas_status&quot;: &quot;PFAS reference&quot;,
+      &quot;pitch_nm&quot;: 28,
+      &quot;dose_to_size_mj_cm2&quot;: 50.9,
+      &quot;exposure_latitude_pct&quot;: 6.9,
+      &quot;dof_nm&quot;: 140,
+      &quot;biased_lwr_nm&quot;: null,
+      &quot;unbiased_lwr_nm&quot;: 2.68,
+      &quot;unbiased_ler_nm&quot;: 1.85,
+      &quot;uncertainty&quot;: null
+    }
+  ]
+}</pre></details></section><footer>Evidence viewer only. No simulation defaults changed. Missing measurements are not zero.</footer><script>document.querySelectorAll('button[data-view]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('section').forEach(s=>s.hidden=s.id!==b.dataset.view);document.querySelectorAll('button[data-view]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));}));</script></html>

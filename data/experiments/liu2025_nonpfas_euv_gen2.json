@@ -1,0 +1,105 @@
+{
+  "dataset_id": "liu2025-nonpfas-euv-gen2",
+  "evidence_type": "reported_patterning_measurements",
+  "source": {
+    "title": "Commercialization of Non-PFAS KrF and Development of Non-PFAS EUV Photoresists",
+    "doi": "10.1117/12.3050881",
+    "locator": "Table 7, Table 8; PDF pp.11\u201313",
+    "sha256": "32874b02ac4e9228525979c326cb1f1e20faa8f7b9cff6bf1fe3dc37703ff012"
+  },
+  "conditions": {
+    "wavelength_nm": 13.5,
+    "film_thickness_nm": 30,
+    "underlayer": "SiARC",
+    "wafer_diameter_mm": 300,
+    "scanner": "ASML NXE3400B",
+    "pab_c": 110,
+    "pab_s": 60,
+    "peb_c": 100,
+    "peb_s": 60,
+    "developer": "0.26 N TMAH",
+    "development_s": 30,
+    "pattern": "line/space",
+    "pag_loading": "equal molar between paired formulations; absolute loading undisclosed",
+    "polymer": "Poly-7",
+    "quencher": "Q-3",
+    "solvents": [
+      "Sol-4",
+      "Sol-5"
+    ]
+  },
+  "limitations": [
+    "Named formulations but proprietary structures/loadings are not disclosed.",
+    "Dose-to-size is not dose-to-clear.",
+    "Exact EL/DOF acceptance criteria and uncertainty/replicates are not specified in the extracted benchmark.",
+    "PFAS status is author-reported; no independent analytical certification.",
+    "Biased LWR at 36 nm pitch and unbiased LWR at 28 nm pitch are different metrics.",
+    "No direct acid-yield or deprotection-time curve. No model defaults changed."
+  ],
+  "discrepancies": [
+    {
+      "metric": "28nm non-PFAS uLER",
+      "adopted_table_value_nm": 1.75,
+      "conflicting_prose_value_nm": 1.85,
+      "policy": "Table 8 selected provisionally; conflict retained, not an author correction."
+    },
+    {
+      "metric": "reference identity",
+      "note": "Gen-2 prose mentions PFAS Ref. C once; Table 7 and Table 8 use PFAS Ref. D. Table labels retained."
+    }
+  ],
+  "observations": [
+    {
+      "id": "euv-gen2-p36-0",
+      "formulation": "Non-PFAS Gen.2 EUV (PAG D)",
+      "pfas_status": "non-PFAS, author-reported",
+      "pitch_nm": 36,
+      "dose_to_size_mj_cm2": 48.7,
+      "exposure_latitude_pct": 10.2,
+      "dof_nm": 140,
+      "biased_lwr_nm": 4.25,
+      "unbiased_lwr_nm": null,
+      "unbiased_ler_nm": null,
+      "uncertainty": null
+    },
+    {
+      "id": "euv-gen2-p36-1",
+      "formulation": "PFAS Ref. D",
+      "pfas_status": "PFAS reference",
+      "pitch_nm": 36,
+      "dose_to_size_mj_cm2": 48.8,
+      "exposure_latitude_pct": 9.3,
+      "dof_nm": 140,
+      "biased_lwr_nm": 4.43,
+      "unbiased_lwr_nm": null,
+      "unbiased_ler_nm": null,
+      "uncertainty": null
+    },
+    {
+      "id": "euv-gen2-p28-0",
+      "formulation": "Non-PFAS Gen.2 EUV (PAG D)",
+      "pfas_status": "non-PFAS, author-reported",
+      "pitch_nm": 28,
+      "dose_to_size_mj_cm2": 51.0,
+      "exposure_latitude_pct": 8.2,
+      "dof_nm": 140,
+      "biased_lwr_nm": null,
+      "unbiased_lwr_nm": 2.54,
+      "unbiased_ler_nm": 1.75,
+      "uncertainty": null
+    },
+    {
+      "id": "euv-gen2-p28-1",
+      "formulation": "PFAS Ref. D",
+      "pfas_status": "PFAS reference",
+      "pitch_nm": 28,
+      "dose_to_size_mj_cm2": 50.9,
+      "exposure_latitude_pct": 6.9,
+      "dof_nm": 140,
+      "biased_lwr_nm": null,
+      "unbiased_lwr_nm": 2.68,
+      "unbiased_ler_nm": 1.85,
+      "uncertainty": null
+    }
+  ]
+}

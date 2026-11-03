@@ -1,0 +1,230 @@
+{
+  "dataset_id": "lu2025-fluorine-free-iline",
+  "evidence_type": "reported_patterning_measurements",
+  "source": {
+    "title": "Fluorine-free i-line thick film photoresist for advanced semiconductor packaging",
+    "doi": "10.1117/12.3050807",
+    "locator": "Tables 1\u20133, PDF pp.3\u20134",
+    "sha256": "c69799fd01498841f6a65e0f56dd557783224429f0cae18e6acd068d51d180c3"
+  },
+  "conditions": {
+    "formulation": "AZ FZero 3000",
+    "pfas_status": "fluorine-free, author-reported",
+    "exposure": "i-line",
+    "na": 0.16,
+    "developer": "0.26 N TMAH"
+  },
+  "limitations": [
+    "Patterning exposure is not dose-to-clear.",
+    "Profile delta CD = (top 80% CD - bottom CD)/bottom CD * 100, not mask-to-print bias.",
+    "Bake recipe, quantitative kinetics and uncertainties are not supplied for calibration.",
+    "Table 2 header says Contact Hole but table title and discussion identify line/space; stored as line/space.",
+    "100 um film / nominal 10 um hole is retained as a poor-profile observation, not a successful resolution claim."
+  ],
+  "observations": [
+    {
+      "id": "iline-t1-10",
+      "source_table": 1,
+      "film_thickness_um": 30,
+      "pattern": "contact hole",
+      "nominal_cd_um": 10,
+      "bottom_cd_um": 10.174,
+      "profile_delta_cd_pct": 0.01,
+      "exposure_mj_cm2": 500,
+      "focus_um": -12,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t1-8",
+      "source_table": 1,
+      "film_thickness_um": 30,
+      "pattern": "contact hole",
+      "nominal_cd_um": 8,
+      "bottom_cd_um": 8.249,
+      "profile_delta_cd_pct": 0.02,
+      "exposure_mj_cm2": 500,
+      "focus_um": -12,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t1-6",
+      "source_table": 1,
+      "film_thickness_um": 30,
+      "pattern": "contact hole",
+      "nominal_cd_um": 6,
+      "bottom_cd_um": 6.37,
+      "profile_delta_cd_pct": 0.72,
+      "exposure_mj_cm2": 500,
+      "focus_um": -12,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t1-5",
+      "source_table": 1,
+      "film_thickness_um": 30,
+      "pattern": "contact hole",
+      "nominal_cd_um": 5,
+      "bottom_cd_um": 5.041,
+      "profile_delta_cd_pct": 5.46,
+      "exposure_mj_cm2": 500,
+      "focus_um": -12,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t1-4",
+      "source_table": 1,
+      "film_thickness_um": 30,
+      "pattern": "contact hole",
+      "nominal_cd_um": 4,
+      "bottom_cd_um": 3.987,
+      "profile_delta_cd_pct": 9.2,
+      "exposure_mj_cm2": 500,
+      "focus_um": -12,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t1-3.5",
+      "source_table": 1,
+      "film_thickness_um": 30,
+      "pattern": "contact hole",
+      "nominal_cd_um": 3.5,
+      "bottom_cd_um": 3.804,
+      "profile_delta_cd_pct": 7.23,
+      "exposure_mj_cm2": 500,
+      "focus_um": -12,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t2-10",
+      "source_table": 2,
+      "film_thickness_um": 30,
+      "pattern": "line/space",
+      "nominal_cd_um": 10,
+      "bottom_cd_um": 10.036,
+      "profile_delta_cd_pct": 0,
+      "exposure_mj_cm2": 550,
+      "focus_um": -12,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t2-8",
+      "source_table": 2,
+      "film_thickness_um": 30,
+      "pattern": "line/space",
+      "nominal_cd_um": 8,
+      "bottom_cd_um": 8.066,
+      "profile_delta_cd_pct": 3.41,
+      "exposure_mj_cm2": 550,
+      "focus_um": -12,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t2-6",
+      "source_table": 2,
+      "film_thickness_um": 30,
+      "pattern": "line/space",
+      "nominal_cd_um": 6,
+      "bottom_cd_um": 6.141,
+      "profile_delta_cd_pct": 6.71,
+      "exposure_mj_cm2": 550,
+      "focus_um": -12,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t2-5",
+      "source_table": 2,
+      "film_thickness_um": 30,
+      "pattern": "line/space",
+      "nominal_cd_um": 5,
+      "bottom_cd_um": 5.041,
+      "profile_delta_cd_pct": 7.28,
+      "exposure_mj_cm2": 550,
+      "focus_um": -12,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t2-4.5",
+      "source_table": 2,
+      "film_thickness_um": 30,
+      "pattern": "line/space",
+      "nominal_cd_um": 4.5,
+      "bottom_cd_um": 4.499,
+      "profile_delta_cd_pct": 9.82,
+      "exposure_mj_cm2": 550,
+      "focus_um": -12,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t3-50",
+      "source_table": 3,
+      "film_thickness_um": 100,
+      "pattern": "contact hole",
+      "nominal_cd_um": 50,
+      "bottom_cd_um": 51.406,
+      "profile_delta_cd_pct": -2.43,
+      "exposure_mj_cm2": 800,
+      "focus_um": 0,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t3-40",
+      "source_table": 3,
+      "film_thickness_um": 100,
+      "pattern": "contact hole",
+      "nominal_cd_um": 40,
+      "bottom_cd_um": 40.469,
+      "profile_delta_cd_pct": -0.77,
+      "exposure_mj_cm2": 800,
+      "focus_um": 0,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t3-30",
+      "source_table": 3,
+      "film_thickness_um": 100,
+      "pattern": "contact hole",
+      "nominal_cd_um": 30,
+      "bottom_cd_um": 30.625,
+      "profile_delta_cd_pct": 1.02,
+      "exposure_mj_cm2": 800,
+      "focus_um": 0,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t3-20",
+      "source_table": 3,
+      "film_thickness_um": 100,
+      "pattern": "contact hole",
+      "nominal_cd_um": 20,
+      "bottom_cd_um": 20.937,
+      "profile_delta_cd_pct": 2.24,
+      "exposure_mj_cm2": 800,
+      "focus_um": 0,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t3-15",
+      "source_table": 3,
+      "film_thickness_um": 100,
+      "pattern": "contact hole",
+      "nominal_cd_um": 15,
+      "bottom_cd_um": 15.937,
+      "profile_delta_cd_pct": 0.99,
+      "exposure_mj_cm2": 800,
+      "focus_um": 0,
+      "uncertainty": null
+    },
+    {
+      "id": "iline-t3-10",
+      "source_table": 3,
+      "film_thickness_um": 100,
+      "pattern": "contact hole",
+      "nominal_cd_um": 10,
+      "bottom_cd_um": 8.125,
+      "profile_delta_cd_pct": 38.46,
+      "exposure_mj_cm2": 800,
+      "focus_um": 0,
+      "uncertainty": null
+    }
+  ]
+}
