@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "dataset_id": "liu2026-solution-kinetics",
+  "source": {
+    "doi": "10.1039/d6sc03643k",
+    "document": "Supporting Information 1",
+    "locator": "Section 4, S1-17\u2013S1-22; Tables S1\u2013S3",
+    "sha256": "7b85e58ae8e32544a39ed1766ef328939c3e9cec13e7f869089fca25e3631f18"
+  },
+  "scope": "Monomer deprotection with pre-added MsOH in DMSO-d6; no photoexposure and no film calibration.",
+  "units": {
+    "k_prime": "s^-1",
+    "ms_oh": "mol L^-1",
+    "k_used": "L mol^-1 s^-1",
+    "k_as_printed": "mol L^-1 s^-1",
+    "correction_reason": "Equation S2 divides k_prime by acid concentration. Preserve printed label but use dimensionally consistent second-order units."
+  },
+  "temperature_note": "Actual tabulated temperatures retained; reported monitoring resolution 0.5\u00b0C is not treated as a statistical uncertainty.",
+  "half_life_conditions": {
+    "temperature_c": 90,
+    "acid_mol_L": 1
+  },
+  "monomers": [
+    {
+      "id": "13",
+      "rates": [
+        {
+          "temperature_c": 83,
+          "acid_mol_L": 0.1324,
+          "k_prime_s_inv": 2.91e-05,
+          "k_L_mol_s": 0.00022,
+          "replicate_count": 2,
+          "rate_standard_error": null
+        },
+        {
+          "temperature_c": 90.5,
+          "acid_mol_L": 0.0676,
+          "k_prime_s_inv": 4.04e-05,
+          "k_L_mol_s": 0.000597,
+          "replicate_count": 2,
+          "rate_standard_error": null
+        },
+        {
+          "temperature_c": 100,
+          "acid_mol_L": 0.0171,
+          "k_prime_s_inv": 3.58e-05,
+          "k_L_mol_s": 0.0021,
+          "replicate_count": 2,
+          "rate_standard_error": null
+        }
+      ],
+      "published_ea_kcal_mol": 35,
+      "published_ea_standard_error": 0.4,
+      "adopted_half_life_s": 1222.2,
+      "published_k90_L_mol_s": 0.000567,
+      "notes": "S1 rates are rounded summaries; raw replicate measurements and rate uncertainties are not provided in this table. S2 uncertainty is reported fit SE, not rate-point uncertainty."
+    },
+    {
+      "id": "1",
+      "rates": [
+        {
+          "temperature_c": 83,
+          "acid_mol_L": 0.1186,
+          "k_prime_s_inv": 2.99e-05,
+          "k_L_mol_s": 0.000252,
+          "replicate_count": 2,
+          "rate_standard_error": null
+        },
+        {
+          "temperature_c": 89,
+          "acid_mol_L": 0.0951,
+          "k_prime_s_inv": 5.21e-05,
+          "k_L_mol_s": 0.000548,
+          "replicate_count": 2,
+          "rate_standard_error": null
+        },
+        {
+          "temperature_c": 100,
+          "acid_mol_L": 0.018,
+          "k_prime_s_inv": 3.94e-05,
+          "k_L_mol_s": 0.00218,
+          "replicate_count": 2,
+          "rate_standard_error": null
+        }
+      ],
+      "published_ea_kcal_mol": 33.5,
+      "published_ea_standard_error": 0.2,
+      "adopted_half_life_s": 1105.9,
+      "published_k90_L_mol_s": 0.000627,
+      "notes": "S1 rates are rounded summaries; raw replicate measurements and rate uncertainties are not provided in this table. S2 uncertainty is reported fit SE, not rate-point uncertainty."
+    },
+    {
+      "id": "14",
+      "rates": [
+        {
+          "temperature_c": 83,
+          "acid_mol_L": 0.0238,
+          "k_prime_s_inv": 0.000537,
+          "k_L_mol_s": 0.0226,
+          "replicate_count": 2,
+          "rate_standard_error": null
+        },
+        {
+          "temperature_c": 90.5,
+          "acid_mol_L": 0.0135,
+          "k_prime_s_inv": 0.000659,
+          "k_L_mol_s": 0.0489,
+          "replicate_count": 2,
+          "rate_standard_error": null
+        },
+        {
+          "temperature_c": 100,
+          "acid_mol_L": 0.0035,
+          "k_prime_s_inv": 0.000491,
+          "k_L_mol_s": 0.14,
+          "replicate_count": 2,
+          "rate_standard_error": null
+        }
+      ],
+      "published_ea_kcal_mol": 28.3,
+      "published_ea_standard_error": 0.9,
+      "adopted_half_life_s": 14.4,
+      "published_k90_L_mol_s": 0.048,
+      "notes": "S1 rates are rounded summaries; raw replicate measurements and rate uncertainties are not provided in this table. S2 uncertainty is reported fit SE, not rate-point uncertainty."
+    },
+    {
+      "id": "15a",
+      "rates": [
+        {
+          "temperature_c": 83,
+          "acid_mol_L": 0.0415,
+          "k_prime_s_inv": 7.83e-05,
+          "k_L_mol_s": 0.00189,
+          "replicate_count": 1,
+          "rate_standard_error": null
+        },
+        {
+          "temperature_c": 90.5,
+          "acid_mol_L": 0.021,
+          "k_prime_s_inv": 8.94e-05,
+          "k_L_mol_s": 0.00425,
+          "replicate_count": 2,
+          "rate_standard_error": null
+        },
+        {
+          "temperature_c": 100,
+          "acid_mol_L": 0.0106,
+          "k_prime_s_inv": 0.000118,
+          "k_L_mol_s": 0.0111,
+          "replicate_count": 2,
+          "rate_standard_error": null
+        }
+      ],
+      "published_ea_kcal_mol": 27.5,
+      "published_ea_standard_error": 0.2,
+      "adopted_half_life_s": 173.2,
+      "published_k90_L_mol_s": 0.004,
+      "notes": "S1 rates are rounded summaries; raw replicate measurements and rate uncertainties are not provided in this table. S2 uncertainty is reported fit SE, not rate-point uncertainty."
+    }
+  ],
+  "discrepancy": {
+    "monomer": "13",
+    "quantity": "half_life_90c_1M_s",
+    "adopted": 1222.2,
+    "adopted_source": "SI1 Table S3",
+    "alternative_main_table2": 1122,
+    "decision": "Use supplementary value, agreed by project owner; rounded S1 Arrhenius reconstruction supports it. Retain main-table discrepancy for provenance."
+  }
+}
